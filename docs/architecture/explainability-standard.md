@@ -1,8 +1,14 @@
 # Explainability Standard
 
-**Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)  
-**Status:** Draft for Phase 1.1 review  
-**Rule:** If a result cannot produce a faithful explanation from stored lineage, it cannot be shown as an authoritative product result.
+- **Document Identifier:** ARCH-EXP-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penfold
+- **Approver:** Andrew Penfold
+- **Effective Date:** 2026-08-05
+- **Review Date:** 2026-11-05
+- **Status:** Ratified
+- **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
+- **Rule:** If a result cannot produce a faithful explanation from stored lineage, it cannot be shown as an authoritative product result.
 
 ## Purpose
 

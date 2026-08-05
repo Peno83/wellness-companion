@@ -1,7 +1,13 @@
 # Security design
 
-**Status:** Proposed for human review  
-**Security objective:** Protect confidentiality, integrity, availability, user agency, and safety of wellness data throughout its lifecycle.
+- **Document Identifier:** SEC-DES-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penfold
+- **Approver:** Andrew Penfold
+- **Effective Date:** 2026-08-05
+- **Review Date:** 2026-11-05
+- **Status:** Ratified
+- **Security objective:** Protect confidentiality, integrity, availability, user agency, and safety of wellness data throughout its lifecycle.
 
 **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md) and complemented by the [Privacy by Design Standard](../security/privacy-by-design.md). Governance denial and protected security controls cannot be bypassed by flags, AI, operators, or downstream services.
 

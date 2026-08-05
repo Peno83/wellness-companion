@@ -1,0 +1,60 @@
+name: Governance change
+description: Propose a governed change to policy, architecture, security, privacy, or authority.
+title: "[Governance]: "
+labels:
+  - governance
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include personal, health, credential, or security-sensitive data. Governance changes do not become effective through issue approval alone.
+  - type: input
+    id: document
+    attributes:
+      label: Affected document identifier and version
+      placeholder: GOV-CON-001 1.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: classification
+    attributes:
+      label: Proposed change class
+      options:
+        - G0 — Editorial
+        - G1 — Routine
+        - G2 — Material
+        - G3 — High risk
+    validations:
+      required: true
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose and user outcome
+      description: State the problem, intended result, and why the change is necessary.
+    validations:
+      required: true
+  - type: textarea
+    id: clauses
+    attributes:
+      label: Affected clauses and artifacts
+      description: List requirements, data, events, calculations, controls, contracts, and releases affected.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks, alternatives, and rollback
+      description: Include privacy, security, safety, availability, and constitutional impacts.
+    validations:
+      required: true
+  - type: checkboxes
+    id: attestations
+    attributes:
+      label: Submission checks
+      options:
+        - label: I checked this proposal against the current Governance Constitution.
+          required: true
+        - label: I understand that missing evidence is treated as non-compliance.
+          required: true
+        - label: This issue contains no personal or sensitive data.
+          required: true

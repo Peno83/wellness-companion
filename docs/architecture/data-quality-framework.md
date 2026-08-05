@@ -1,8 +1,14 @@
 # Data Quality Framework
 
-**Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)  
-**Status:** Draft for Phase 1.1 review  
-**Rule:** No incoming measurement may enter analytics, scoring, governance facts, or AI input without a recorded quality decision.
+- **Document Identifier:** ARCH-DQ-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penfold
+- **Approver:** Andrew Penfold
+- **Effective Date:** 2026-08-05
+- **Review Date:** 2026-11-05
+- **Status:** Ratified
+- **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
+- **Rule:** No incoming measurement may enter analytics, scoring, governance facts, or AI input without a recorded quality decision.
 
 ## Purpose
 

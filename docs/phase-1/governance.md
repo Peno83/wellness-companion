@@ -1,8 +1,13 @@
 # Governance specification
 
-**Status:** Draft for human review  
-**Owner:** Product governance lead  
-**Purpose:** Define who may approve changes that affect users, sensitive data, scoring, or safety.
+- **Document Identifier:** GOV-OPS-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penfold
+- **Approver:** Andrew Penfold
+- **Effective Date:** 2026-08-05
+- **Review Date:** 2026-11-05
+- **Status:** Ratified
+- **Purpose:** Define who may approve changes that affect users, sensitive data, scoring, or safety.
 
 **Authority:** This operational specification is subordinate to the [Governance Constitution](../governance/governance-constitution.md). If the documents conflict, the constitution controls and affected work stops until this specification is corrected. This specification cannot create an exception to the constitution.
 

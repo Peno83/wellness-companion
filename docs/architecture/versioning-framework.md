@@ -1,8 +1,14 @@
 # Versioning Framework
 
-**Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)  
-**Status:** Draft for Phase 1.1 review  
-**Rule:** Each stored calculation must reference every applicable version. Missing or incompatible versions make the result invalid for display or downstream use.
+- **Document Identifier:** ARCH-VER-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penfold
+- **Approver:** Andrew Penfold
+- **Effective Date:** 2026-08-05
+- **Review Date:** 2026-11-05
+- **Status:** Ratified
+- **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
+- **Rule:** Each stored calculation must reference every applicable version. Missing or incompatible versions make the result invalid for display or downstream use.
 
 ## Purpose
 

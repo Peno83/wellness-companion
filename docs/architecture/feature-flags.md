@@ -1,8 +1,14 @@
 # Feature Flag Framework
 
-**Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)  
-**Status:** Draft for Phase 1.1 review  
-**Definition:** A feature flag is a versioned control that enables or disables a bounded product capability without changing its constitutional permissions.
+- **Document Identifier:** ARCH-FLAG-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penfold
+- **Approver:** Andrew Penfold
+- **Effective Date:** 2026-08-05
+- **Review Date:** 2026-11-05
+- **Status:** Ratified
+- **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
+- **Definition:** A feature flag is a versioned control that enables or disables a bounded product capability without changing its constitutional permissions.
 
 ## Purpose
 

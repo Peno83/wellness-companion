@@ -1,8 +1,14 @@
 # Source Provenance Standard
 
-**Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)  
-**Status:** Draft for Phase 1.1 review  
-**Applies to:** Every manual, imported, device-originated, calculated, corrected, or migrated measurement
+- **Document Identifier:** ARCH-PROV-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penfold
+- **Approver:** Andrew Penfold
+- **Effective Date:** 2026-08-05
+- **Review Date:** 2026-11-05
+- **Status:** Ratified
+- **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
+- **Applies to:** Every manual, imported, device-originated, calculated, corrected, or migrated measurement
 
 ## Purpose
 

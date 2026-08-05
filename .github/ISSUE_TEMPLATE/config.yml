@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/Peno83/wellness-companion/security/advisories/new
+    about: Report suspected vulnerabilities privately. Do not include sensitive wellness data.
+  - name: Governance registry
+    url: https://github.com/Peno83/wellness-companion/blob/main/docs/governance/governance-registry.md
+    about: Review current authority, approval, and dispute-resolution roles.

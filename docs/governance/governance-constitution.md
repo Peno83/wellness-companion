@@ -1,10 +1,14 @@
 # Wellness Companion Governance Constitution
 
-**Authority:** Highest governing document  
-**Version:** 1.0.0-draft  
-**Status:** Draft for human ratification  
-**Effective date:** Not effective until ratified  
-**Applies to:** Every product decision, architecture, feature, dataset, calculation, AI interaction, release, operator action, and third-party relationship
+- **Document Identifier:** GOV-CON-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penfold
+- **Approver:** Andrew Penfold
+- **Effective Date:** 2026-08-05
+- **Review Date:** 2026-11-05
+- **Status:** Ratified
+- **Authority:** Highest governing document
+- **Applies to:** Every product decision, architecture, feature, dataset, calculation, AI interaction, release, operator action, and third-party relationship
 
 ## Constitutional authority
 
@@ -244,7 +248,7 @@ Emergency action may disable processing to protect users, data, or service integ
 
 ## Ratification and unresolved authority
 
-Before Phase 2, humans must name the constitutional authority, governance owner, independent approvers, and dispute resolver. Until ratification, this document is the proposed highest authority. Any implementation work that depends on unresolved constitutional language remains blocked.
+The [Governance Registry](governance-registry.md) names the Constitutional Authority, Governance Owner, Independent Technical Reviewer, Implementation Authority, Release Authority, and Dispute Resolver. Any implementation work outside registered authority or dependent on unresolved constitutional language remains blocked.
 
 ## Related binding standards
 

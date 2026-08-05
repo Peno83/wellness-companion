@@ -1,0 +1,47 @@
+# Dependencies and package-manager state
+node_modules/
+.pnp
+.pnp.*
+
+# Build and test output
+.next/
+out/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+.turbo/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Runtime output
+*.log
+logs/
+tmp/
+temp/
+
+# Generated database artifacts
+*.db
+*.db-journal
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Tool caches
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+.cache/
+
+# Local AI/agent state
+.gstack/

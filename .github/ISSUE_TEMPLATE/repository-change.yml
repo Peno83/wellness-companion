@@ -1,0 +1,44 @@
+name: Repository or process change
+description: Propose a documentation, tooling, CI, or repository-policy change.
+title: "[Repository]: "
+labels:
+  - repository
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, personal data, or undisclosed security details.
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Intended outcome
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: In scope and explicitly out of scope
+    validations:
+      required: true
+  - type: textarea
+    id: governance
+    attributes:
+      label: Governance and document traceability
+      placeholder: List document identifiers, versions, and applicable release gates.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Verification evidence required
+      description: Define review, tests, checks, or documentation needed before completion.
+    validations:
+      required: true
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Constraints
+      options:
+        - label: No application feature is implied unless separately authorized.
+          required: true
+        - label: No sensitive data is included in this issue.
+          required: true

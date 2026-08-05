@@ -1,7 +1,7 @@
 # Implementation roadmap
 
-**Status:** Proposed; execution begins only after Phase 1.1 human approval  
-**Current stopping point:** Phase 1.1 documents delivered for review
+- **Status:** Phase 1.2 repository prerequisites prepared for Release Authority review
+- **Current stopping point:** Phase 1.2 governance and repository controls delivered
 
 **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md). Schedule or scope cannot waive a constitutional gate.
 
@@ -36,7 +36,7 @@
 
 No application implementation, external API connection, credential setup, vendor SDK, or production infrastructure belongs to Phase 1.
 
-## Phase 1.1: Foundation hardening — current phase
+## Phase 1.1: Foundation hardening — completed draft
 
 **Goal:** Make governance the highest non-bypassable authority and define provenance, quality, versions, explainability, rollout, events, privacy, and AI isolation before code.
 
@@ -62,7 +62,29 @@ Exit evidence:
 - Phase 2 backlog items each have constitutional traceability and privacy-design entry criteria.
 - No application code, scaffolding, packages, databases, authentication, APIs, integrations, or frontend pages were introduced.
 
-Work stops at this review gate.
+## Phase 1.2: Governance and repository readiness — current phase
+
+**Goal:** Ratify governance authority and create repository controls before implementation.
+
+Delivered:
+
+- ratified Constitution 1.0.0 and Governance Registry 1.0.0;
+- named constitutional, governance, implementation, release, review, and dispute authorities;
+- version, owner, approver, effective date, review date, status, and document identifier on governance-controlled binding standards;
+- repository ignore, editor, and line-ending policy;
+- CODEOWNERS, governed issue forms, and pull-request evidence template;
+- a manually triggered future CI skeleton whose only job is disabled;
+- no application code, package installation, database connection, authentication, or frontend work.
+
+Exit evidence:
+
+- registry and document metadata pass consistency review;
+- all local documentation links resolve;
+- repository contains no dependency manifest, application source, credential, or generated build output;
+- GitHub templates and workflow YAML are structurally reviewed;
+- Release Authority confirms readiness for the next separately authorized phase.
+
+Work stops at this gate.
 
 ## Phase 2: Foundation and walking skeleton
 

@@ -1,9 +1,15 @@
 # System Architecture
 
-**Status:** Revised for Phase 1.1 human review  
-**Scope:** Logical target architecture, not an implementation  
-**Highest authority:** [Governance Constitution](../governance/governance-constitution.md)  
-**External integrations:** Explicitly excluded from Phase 1.1
+- **Document Identifier:** ARCH-SYS-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penfold
+- **Approver:** Andrew Penfold
+- **Effective Date:** 2026-08-05
+- **Review Date:** 2026-11-05
+- **Status:** Ratified
+- **Scope:** Logical target architecture, not an implementation
+- **Highest authority:** [Governance Constitution](../governance/governance-constitution.md)
+- **External integrations:** Explicitly excluded from Phase 1.1
 
 ## Architectural authority
 

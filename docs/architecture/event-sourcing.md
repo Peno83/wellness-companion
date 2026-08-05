@@ -1,8 +1,14 @@
 # Event Sourcing Standard
 
-**Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)  
-**Status:** Draft for Phase 1.1 review  
-**Decision:** Every domain change becomes an immutable event. Current state is a governed projection of authorized events.
+- **Document Identifier:** ARCH-EVENT-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penfold
+- **Approver:** Andrew Penfold
+- **Effective Date:** 2026-08-05
+- **Review Date:** 2026-11-05
+- **Status:** Ratified
+- **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
+- **Decision:** Every domain change becomes an immutable event. Current state is a governed projection of authorized events.
 
 ## Purpose
 

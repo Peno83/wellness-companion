@@ -1,0 +1,12 @@
+# Default repository ownership and release accountability.
+* @Peno83
+
+# Governance changes always require the registered human authority.
+/docs/governance/ @Peno83
+/docs/architecture/ @Peno83
+/docs/security/ @Peno83
+/docs/phase-1/ @Peno83
+/.github/ @Peno83
+
+# Future implementation paths inherit default ownership until a ratified
+# governance-registry change assigns additional accountable maintainers.

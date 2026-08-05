@@ -1,8 +1,14 @@
 # Privacy by Design Standard
 
-**Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)  
-**Status:** Draft for Phase 1.1 review  
-**Rule:** A feature cannot enter implementation until its privacy design record is complete and approved.
+- **Document Identifier:** SEC-PRIV-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penfold
+- **Approver:** Andrew Penfold
+- **Effective Date:** 2026-08-05
+- **Review Date:** 2026-11-05
+- **Status:** Ratified
+- **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
+- **Rule:** A feature cannot enter implementation until its privacy design record is complete and approved.
 
 ## Purpose
 
