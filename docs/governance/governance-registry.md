@@ -1,13 +1,14 @@
 # Governance Registry
 
 - **Document Identifier:** GOV-REG-001
-- **Version:** 1.1.0
+- **Version:** 1.1.1
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
-- **Supersedes:** 1.0.0
+- **Status:** active
+- **Governance Approval:** Ratified
+- **Supersedes:** 1.1.0
 
 ## Purpose
 
@@ -16,10 +17,11 @@ This registry is the authoritative human-readable record of constitutional autho
 ## Current governance registration
 
 | Field | Registered value |
-|---|---|
-| Constitution Version | 1.1.0 |
-| Status | Ratified |
-| Effective Date | 2026-08-05 |
+| --- | --- |
+| Constitution Version | 1.1.1 |
+| Lifecycle Status | active |
+| Governance Approval | Ratified |
+| Effective Date | 2026-08-06 |
 | Constitutional Authority | Andrew Penistone |
 | Governance Owner | Andrew Penistone |
 | Independent Technical Reviewer | Claude AI (Advisory) |
@@ -69,7 +71,7 @@ The next scheduled review is 2026-11-05. A review may confirm the current versio
 ## Approval History
 
 | Date | Artifact/version | Decision | Authority | Technical review | Notes |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | 2026-08-05 | Governance Constitution 1.0.0 | Ratified and made effective | Andrew Penfold | Claude AI (Advisory) | Historical record retained. Identity corrected on 2026-08-06 to Andrew Penistone. |
 | 2026-08-05 | Governance Registry 1.0.0 | Ratified and made effective | Andrew Penfold | Claude AI (Advisory) | Historical record retained. Identity corrected on 2026-08-06 to Andrew Penistone. |
 | 2026-08-05 | Phase 1.2 repository prerequisites | Authorized | Andrew Penfold | Claude AI (Advisory) | Historical record retained. Identity corrected on 2026-08-06 to Andrew Penistone. |
@@ -78,13 +80,19 @@ The next scheduled review is 2026-11-05. A review may confirm the current versio
 | 2026-08-06 | Review Findings Register 1.0.0 | Ratified and made effective | Andrew Penistone | Claude AI (Advisory) | Establishes findings disposition and traceability. |
 | 2026-08-06 | Residual Risk Register 1.0.0 | Ratified and made effective | Andrew Penistone | Claude AI (Advisory) | Records time-bounded Phase 1.3 residual-risk acceptances. |
 | 2026-08-06 | Governance Registry 1.1.0 | Ratified and made effective | Andrew Penistone | Claude AI (Advisory) | Registers Constitution 1.1.0 and preserves historical identity records. |
+| 2026-08-06 | Phase 2A.0 repository enforcement | Authorized | Andrew Penistone | Claude AI (Advisory) | CI remediation, executable-workflow policy, secret detection, and metadata consistency only; no application implementation. |
+| 2026-08-06 | Governance Constitution 1.1.1 | Ratified and made effective | Andrew Penistone | Claude AI (Advisory) | Separates active lifecycle status from ratification without changing constitutional obligations. |
+| 2026-08-06 | Versioning Framework 1.2.0 | Ratified and made effective | Andrew Penistone | Claude AI (Advisory) | Adds the content-digest canonicalisation milestone and lifecycle/approval separation. |
+| 2026-08-06 | Review Findings Register 1.2.0 | Ratified and made effective | Andrew Penistone | Claude AI (Advisory) | Corrects evidence and adds Phase 1.3 Medium/Low and Phase 1.4 findings. |
+| 2026-08-06 | Governance Registry 1.1.1 | Ratified and made effective | Andrew Penistone | Claude AI (Advisory) | Registers Phase 2A.0 authority, current versions, and corrected lifecycle metadata. |
 
 ## Change Log
 
 | Version | Date | Change | Approved by |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1.0.0 | 2026-08-05 | Initial ratified registry; records Constitution 1.0.0 and named governance, implementation, review, release, and dispute roles. Historical approver recorded as Andrew Penfold; corrected identity is Andrew Penistone. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.1.0 | 2026-08-06 | Registers Constitution 1.1.0, Phase 1.3 governance artifacts, and the administrative identity correction while preserving original approval rows. | Andrew Penistone |
+| 1.1.1 | 2026-08-06 | Registers Constitution 1.1.1, corrects the current effective date, and separates active lifecycle status from ratification. | Andrew Penistone |
 
 ## Change control
 
@@ -107,3 +115,4 @@ Historical approval and change-log entries must not be rewritten or removed.
 - [Phase 1 Independent Architecture Review](../reviews/2026-08-05-phase-1-independent-architecture-review.md)
 - [Phase 1.2 Governance Gate Review](../reviews/2026-08-05-phase-1.2-gate-review.md)
 - [Phase 1.3 Governance Gate Review](../reviews/2026-08-06-phase-1.3-gate-review.md)
+- [Phase 1.4 Governance Gate Review](../reviews/2026-08-06-phase-1.4-gate-review.md)

@@ -1,12 +1,14 @@
 # AI Use Policy
 
 - **Document Identifier:** GOV-AI-001
-- **Version:** 1.0.0
+- **Version:** 1.0.1
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
+- **Status:** active
+- **Governance Approval:** Ratified
+- **Supersedes:** 1.0.0
 
 ## Purpose and authority
 
@@ -17,7 +19,7 @@ This policy governs internal use of artificial intelligence in the Wellness Comp
 Only the following uses are approved during documentation and pre-implementation phases:
 
 | Provider or tool | Approved purpose | Authority | Prohibited use |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | OpenAI Codex | Scoped documentation and future implementation assistance requested by the Implementation Authority | Produces proposals and artifacts only | Product-runtime use, personal data, secrets, release approval, or self-approval |
 | Anthropic Claude AI | Advisory independent technical review | Advisory findings only | Binding approval, product-runtime use, personal data, secrets, or resolving its own findings |
 
@@ -91,3 +93,10 @@ On suspected disclosure, unsafe output, policy bypass, fabricated evidence, unau
 6. require named human approval before restoring use.
 
 The Dispute Resolver decides policy disputes, but cannot waive the Constitution.
+
+## Document change log
+
+| Version | Effective date | Classification | Change | Approved by |
+| --- | --- | --- | --- | --- |
+| 1.0.0 | 2026-08-06 | Initial normative release | Established internal AI-use governance. | Andrew Penistone |
+| 1.0.1 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. | Andrew Penistone |

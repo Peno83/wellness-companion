@@ -1,7 +1,14 @@
 # Implementation roadmap
 
-- **Status:** Phase 1.2 repository prerequisites prepared for Release Authority review
-- **Current stopping point:** Phase 1.2 governance and repository controls delivered
+- **Document Identifier:** PLAN-ROAD-001
+- **Version:** 0.1.0
+- **Owner:** Andrew Penistone
+- **Approver:** Not applicable while draft
+- **Effective Date:** Not applicable while draft
+- **Review Date:** Before authorising the next implementation milestone
+- **Status:** draft
+- **Governance Approval:** Pending Release Authority review
+- **Current stopping point:** Phase 2A.0 repository enforcement and CI remediation
 
 **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md). Schedule or scope cannot waive a constitutional gate.
 
@@ -179,7 +186,7 @@ No external language model, including Claude, is assumed. Before any model is co
 ## Cross-phase workstreams
 
 | Workstream | Continuous evidence |
-|---|---|
+| --- | --- |
 | Product | Requirement traceability, research findings, outcome and harm metrics |
 | Governance | Approval log, claim register, hazard register, incident review |
 | Scoring | Method versions, test vectors, validation and drift reports |
@@ -191,7 +198,7 @@ No external language model, including Claude, is assumed. Before any model is co
 ## Human decisions required before Phase 2
 
 | ID | Decision | Recommended starting position | Owner needed |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | D-01 | Launch user and age floor | Adults using their own data; no minors | Product + legal/privacy |
 | D-02 | Launch jurisdictions | One explicitly reviewed jurisdiction first | Product + legal/privacy |
 | D-03 | Client platform | Choose from user research and team capability | Product + engineering |

@@ -65,7 +65,13 @@ jobs:
       - name: Test boundary rules
         shell: pwsh
         run: ./.github/scripts/Test-PhaseBoundary.ps1 -SelfTest
-      - name: Enforce Phase 1 boundary
+      - name: Test workflow policy
+        shell: pwsh
+        run: ./.github/scripts/Test-WorkflowPolicy.ps1 -SelfTest
+      - name: Validate workflow policy
+        shell: pwsh
+        run: ./.github/scripts/Test-WorkflowPolicy.ps1
+      - name: Enforce Phase 2A.0 boundary
         shell: pwsh
         run: ./.github/scripts/Test-PhaseBoundary.ps1
 
@@ -76,6 +82,9 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Test secret detection rules
+        shell: pwsh
+        run: ./.github/scripts/Test-SecretPatterns.ps1 -SelfTest
       - name: Check repository content
         shell: pwsh
         run: ./.github/scripts/Test-SecretPatterns.ps1

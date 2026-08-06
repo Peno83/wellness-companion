@@ -26,7 +26,7 @@ The third pattern is **scale and cost blindness**. There is no user-count assump
 ### Findings at a glance
 
 | Severity | Count | Definition used in this review |
-|---|---:|---|
+| --- | ---: | --- |
 | Critical | 7 | Blocks Phase 2 entry. Contradiction between binding documents, unenforceable mandate, or legal/safety exposure. Not resolvable by an implementation decision. |
 | High | 26 | Must close before the affected Phase 2 workstream begins. |
 | Medium | 35 | Close before Phase 3 (private beta). |
@@ -123,6 +123,7 @@ You cannot enforce an age floor while refusing to collect or derive any age sign
 Product requirements list safety response as **P0, required for first release**: detect configured crisis or urgent-care phrases *in free text* using deterministic rules, suppress normal recommendations, and present reviewed support language.
 
 Four other documents undercut the input this depends on:
+
 - D-04 recommends excluding free-text notes initially unless research proves value.
 - Security design: "The first implementation should store plain text only if product review confirms its value."
 - Scoring methodology excludes free text from numerical scoring.
@@ -131,6 +132,7 @@ Four other documents undercut the input this depends on:
 **If notes are excluded, the release-blocking safety capability has no input at all.** No document states what the safety posture is in that case, and none acknowledges the dependency.
 
 Four further gaps compound this:
+
 1. **No version family.** The Versioning Framework defines eight independently versioned authorities. The urgent-risk phrase list — the highest-harm artifact in the product — is not among them, and unlike recommendation content (which has `eligibility_rule_version` and `contraindication_rule_version`) it has no versioned artifact anywhere.
 2. **No false-negative governance.** Deterministic phrase matching on free text has a high false-negative rate by construction. No metric, review cadence, or hazard entry addresses missed detection. The hazard register lists "false reassurance after concerning input" but not "urgent-risk rule failed to fire".
 3. **No explainability contract.** The Explainability Standard covers scores, trends, recommendations and AI-assisted output. The safety interruption — the highest-stakes user-facing output in the product — is outside its scope entirely. (Also recorded as H-13.)
@@ -150,7 +152,7 @@ The Phase 1.1 exit gate requires reviewers to ratify "the scoring policy and val
 
 **(b) Day-one confidence contradicts a P0 requirement and a product principle.** Substituting a complete first-day check-in into the stated support index:
 
-```
+```text
 support = 0.40×coverage + 0.25×freshness + 0.20×baseline_maturity + 0.15×consistency
         = 0.40×1.0    + 0.25×1.0       + 0.20×(1/14)          + 0.15×1.0
         = 0.400       + 0.250          + 0.014                + 0.150
@@ -289,7 +291,7 @@ Sleep: "more favorable values increase domain score within reviewed ranges" — 
 Close before Phase 3 (private beta). Ordered by document.
 
 | ID | Document | Finding |
-|---|---|---|
+| --- | --- | --- |
 | M-01 | system-architecture | Analytics computes before governance authorisation in the mandated sequence; intermediate analytics artifacts have no defined classification, storage location, or retention. |
 | M-25 | system-architecture | Failure table omits identity-provider outage, event-store write failure, partial append/project, poison events, and clock skew — the last is material given the DST and observed/received timestamp rules. |
 | M-30 | product-requirements | FR-13–FR-20 "acceptance criteria" restate the requirement rather than defining verifiable evidence, unlike FR-01–FR-12. |
@@ -331,7 +333,7 @@ Close before Phase 3 (private beta). Ordered by document.
 ## 7. Low findings
 
 | ID | Document | Finding |
-|---|---|---|
+| --- | --- | --- |
 | L-01 | event-sourcing | Vendor vocabulary (`WHOOP Sync Completed`, `Glucose Added`, `Recovery Imported`) is baked into the event catalogue of a deliberately provider-neutral domain (ADR-001). |
 | L-02 | feature-flags | Reserved `Glucose` and `Body Composition` module flags invite non-diagnostic boundary drift; glucose in particular is medical-device adjacent. |
 | L-03 | security-design | A TLS 1.2 floor is soft for a 2026 greenfield build; TLS 1.3 with a constrained 1.2 fallback would be the stronger default. |
@@ -353,7 +355,7 @@ The following consolidate findings by the categories requested. IDs cross-refere
 ### 8.1 Missing requirements
 
 | # | Missing requirement | Related |
-|---|---|---|
+| --- | --- | --- |
 | MR-1 | Per-data-element governance register (purpose, classification, owner, legal basis, retention, deletion, consumers) | C-03 |
 | MR-2 | Age assurance / age-floor enforcement control | C-04 |
 | MR-3 | Authentication, session management, account recovery and rate limiting as *functional* requirements (present in security design, absent from the FR set, therefore untraceable) | H-17, M-20, M-21 |
@@ -373,7 +375,7 @@ The following consolidate findings by the categories requested. IDs cross-refere
 ### 8.2 Security risks
 
 | Risk | Severity | Finding |
-|---|---|---|
+| --- | --- | --- |
 | Fail-closed control plane as a denial-of-service amplifier; no isolation or rate limiting for Governance Engine, policy registry, audit store | Critical | C-07 |
 | Prompt injection via user-controlled `note` and `ContextTag` label reaching Structured Facts; no rule prohibits user text in Structured Facts | High | H-04 |
 | Non-bypass guarantee rests on discipline, not architecture, in a modular monolith with a shared database | High | H-01 |
@@ -392,7 +394,7 @@ The following consolidate findings by the categories requested. IDs cross-refere
 ### 8.3 Privacy risks
 
 | Risk | Severity | Finding |
-|---|---|---|
+| --- | --- | --- |
 | Collection prohibited by the Constitution until a per-element register exists; none exists | Critical | C-03 |
 | Age floor unenforceable; children's-data obligations unaddressed | Critical | C-04 |
 | Crypto-erasure vs provider-managed encryption contradiction leaves erasure undeliverable as specified | High | H-02 |
@@ -410,7 +412,7 @@ The following consolidate findings by the categories requested. IDs cross-refere
 ### 8.4 Governance gaps
 
 | Gap | Severity | Finding |
-|---|---|---|
+| --- | --- | --- |
 | Constitution unratified; no named authority, owner, approvers or dispute resolver | Critical | C-01 |
 | Binding standards do not comply with the Versioning Framework they impose | Critical | C-02 |
 | Separation of duties unachievable at small team size, with no designed fallback | High | H-20 |
@@ -430,7 +432,7 @@ The following consolidate findings by the categories requested. IDs cross-refere
 ### 8.5 Scalability concerns
 
 | Concern | Severity | Finding |
-|---|---|---|
+| --- | --- | --- |
 | No volumetric, growth, latency-budget or cost model for an event-sourced design where metadata exceeds payload by ~10× | High | H-11 |
 | Governance Engine evaluated at every command, event consumption, calculation, facts creation, AI invocation and output, with no caching, PDP/PEP split, or decision-latency budget | Critical | C-07 |
 | Version compatibility matrix across 8+ families with fail-closed on unknown combinations | High | H-09 |
@@ -443,7 +445,7 @@ The following consolidate findings by the categories requested. IDs cross-refere
 ### 8.6 Future technical debt
 
 | Debt | Finding |
-|---|---|
+| --- | --- |
 | Mandatory `Confidence` on manual entries before a confidence scale exists → a hardcoded constant that will persist for years and pollute every explanation | M-06 |
 | Mandatory `Device` on every measurement → a fingerprint field that will be hard to remove once downstream consumers depend on it | M-07 |
 | Free text modelled as a metric → wrong provenance, retention and export semantics baked into the schema | H-25 |
@@ -461,7 +463,7 @@ The following consolidate findings by the categories requested. IDs cross-refere
 ## 9. Per-document assessment
 
 | Document | Assessment | Findings |
-|---|---|---|
+| --- | --- | --- |
 | `README.md` (root) | Accurate and appropriately scoped. | M-32 |
 | `docs/README.md` | Clear authority order; incomplete for peer conflicts and tier assignment. | H-15, M-31 |
 | `docs/phase-1/README.md` | Good review ordering and exit-gate framing; assumes artifacts that do not exist. | C-01, H-17 |
@@ -498,17 +500,17 @@ The following consolidate findings by the categories requested. IDs cross-refere
 
 **P2 — Before the affected Phase 2 workstream starts.**
 
-8. Resolve the key architecture: per-subject keys vs provider-managed encryption, with a stated crypto-erasure residual risk. Specify the deletion tombstone mechanism. *(H-02, H-03)*
-9. Complete the data model's entity set and unify the missingness vocabulary. *(H-05, H-06)*
-10. Set provisional retention for every category; cap backup retention; give quarantine an expiry. Adopt provisional rights and breach clocks. *(H-07, H-08)*
-11. Define Structured Facts conceptually, prohibit unsanitised user-controlled text within it, and add a normative glossary. *(H-04, H-19)*
-12. Produce the volumetric model, latency budget and snapshotting strategy *before* selecting the event store; resolve replay-under-changed-governance and retired-artifact retention at the same time. *(H-09, H-10, H-11)*
-13. Specify the signed-bundle trust root and the audit integrity mechanism. *(H-12, H-21)*
-14. Either strengthen the topology to match the "structural" non-bypass claim or restate the claim, and specify the conformance-test mechanism concretely. *(H-01)*
-15. Add the client trust boundary, rate the threat model, and write the internal AI-use policy. *(H-14, H-22, H-26)*
-16. Build the traceability matrix; correct the authority tiers and the renderer/validator diagram. *(H-15, H-16, H-17)*
-17. Extend the Explainability Standard to cover safety interruption. *(H-13)*
-18. Define consent-withdrawal consequences per purpose. *(H-18)*
+1. Resolve the key architecture: per-subject keys vs provider-managed encryption, with a stated crypto-erasure residual risk. Specify the deletion tombstone mechanism. *(H-02, H-03)*
+2. Complete the data model's entity set and unify the missingness vocabulary. *(H-05, H-06)*
+3. Set provisional retention for every category; cap backup retention; give quarantine an expiry. Adopt provisional rights and breach clocks. *(H-07, H-08)*
+4. Define Structured Facts conceptually, prohibit unsanitised user-controlled text within it, and add a normative glossary. *(H-04, H-19)*
+5. Produce the volumetric model, latency budget and snapshotting strategy *before* selecting the event store; resolve replay-under-changed-governance and retired-artifact retention at the same time. *(H-09, H-10, H-11)*
+6. Specify the signed-bundle trust root and the audit integrity mechanism. *(H-12, H-21)*
+7. Either strengthen the topology to match the "structural" non-bypass claim or restate the claim, and specify the conformance-test mechanism concretely. *(H-01)*
+8. Add the client trust boundary, rate the threat model, and write the internal AI-use policy. *(H-14, H-22, H-26)*
+9. Build the traceability matrix; correct the authority tiers and the renderer/validator diagram. *(H-15, H-16, H-17)*
+10. Extend the Explainability Standard to cover safety interruption. *(H-13)*
+11. Define consent-withdrawal consequences per purpose. *(H-18)*
 
 **P3 — Before Phase 3 private beta.** All Medium findings, prioritising M-02 (quality classification axes), M-04/M-05 (operator powers), M-16 (DPIA), M-20/M-21 (recovery and MFA), M-24 (schema evolution and snapshots), and M-25 (missing failure modes).
 
@@ -521,7 +523,7 @@ The following consolidate findings by the categories requested. IDs cross-refere
 The Criticals are not uniformly expensive. Four are largely documentation work; three require genuine design.
 
 | Workstream | Content | Rough effort |
-|---|---|---:|
+| --- | --- | ---: |
 | Ratification and artifact hygiene | C-01, C-02, M-32, ADR sign-off blocks | 3–5 days |
 | Data governance register | C-03, three worked privacy records, H-06 vocabulary unification | 5–8 days |
 | Legal and boundary decisions | C-04, C-05 (jointly with D-02, D-04, D-07) | 5–10 days, gated on external legal input |

@@ -1,8 +1,14 @@
 # Phase 1, 1.1, and 1.2: Product, governance, and repository definition
 
-- **Status:** Phase 1.2 governance prerequisites complete for human review
-**Date:** 2026-08-05  
-**Scope:** Documentation and design only
+- **Document Identifier:** PH1-IDX-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penistone
+- **Approver:** Andrew Penistone
+- **Effective Date:** 2026-08-06
+- **Review Date:** 2026-11-05
+- **Status:** active
+- **Governance Approval:** Approved
+- **Scope:** Documentation and design only
 
 This package defines what Wellness Companion should do, how it should be built, and which safeguards must exist before implementation starts. It intentionally contains no production application code, credentials, vendor SDKs, network calls, database connection, authentication integration, API, package setup, or frontend work.
 

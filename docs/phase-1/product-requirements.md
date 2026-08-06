@@ -1,8 +1,14 @@
 # Product requirements
 
-**Status:** Draft for human review  
-**Owner:** Product  
-**Applies to:** Planned MVP and its design constraints
+- **Document Identifier:** PROD-REQ-001
+- **Version:** 0.1.0
+- **Owner:** Product Owner (unassigned)
+- **Approver:** Not applicable while draft
+- **Effective Date:** Not applicable while draft
+- **Review Date:** Before product implementation
+- **Status:** draft
+- **Governance Approval:** Pending human review
+- **Applies to:** Planned MVP and its design constraints
 
 **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md). A requirement that conflicts with the constitution is invalid and must not enter implementation.
 
@@ -36,7 +42,7 @@ An adult who wants to understand personal wellness patterns and is willing to re
 Targets are proposed and require product approval before Phase 2.
 
 | Goal | MVP measure | Proposed target |
-|---|---|---:|
+| --- | --- | ---: |
 | Make daily reflection easy | Median check-in completion time | ≤ 90 seconds |
 | Create repeat value | Users completing ≥4 check-ins in week 4 | ≥ 35% |
 | Preserve comprehension | Users correctly explaining score and confidence in usability test | ≥ 80% |
@@ -139,7 +145,7 @@ Metrics must be segmented without exposing small cohorts or sensitive attributes
 ## Functional requirements
 
 | ID | Requirement | Acceptance criterion |
-|---|---|---|
+| --- | --- | --- |
 | FR-01 | Versioned consent | Every collected purpose maps to an active consent record and policy version. |
 | FR-02 | Check-in validation | Invalid values are rejected; missing and zero remain distinct. |
 | FR-03 | Provenance | Every observation records source, observed time, received time, and unit where applicable. |
@@ -164,7 +170,7 @@ Metrics must be segmented without exposing small cohorts or sensitive attributes
 ## Non-functional requirements
 
 | ID | Requirement | Proposed MVP target |
-|---|---|---|
+| --- | --- | --- |
 | NFR-01 | Availability | 99.5% monthly, excluding announced maintenance |
 | NFR-02 | Interactive performance | p95 read response ≤500 ms; p95 write acknowledgement ≤800 ms under expected load |
 | NFR-03 | Recoverability | RPO ≤24 hours and RTO ≤8 hours, tested before launch |

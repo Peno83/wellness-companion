@@ -1,12 +1,13 @@
 # System Architecture
 
 - **Document Identifier:** ARCH-SYS-001
-- **Version:** 1.0.1
+- **Version:** 1.0.2
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
+- **Status:** active
+- **Governance Approval:** Ratified
 - **Supersedes:** 1.0.0
 - **Scope:** Logical target architecture, not an implementation
 - **Highest authority:** [Governance Constitution](../governance/governance-constitution.md)
@@ -86,7 +87,7 @@ User
 ### Why this separation exists
 
 | Boundary | Protection |
-|---|---|
+| --- | --- |
 | Raw Data to Normalization Engine | Preserves exact source values while producing canonical timestamps, units, and types |
 | Normalization to Analytics Engine | Prevents analytics from guessing units, provenance, missingness, or quality |
 | Analytics to Governance Engine | Lets calculations occur under versioned methods but prevents unapproved results from becoming facts or advice |
@@ -124,7 +125,7 @@ Enforcement occurs at design review, release admission, command handling, event 
 ## Logical components
 
 | Component | Responsibility | Prohibited behavior |
-|---|---|---|
+| --- | --- | --- |
 | Governance registry | Store immutable approved constitution/policy artifacts, versions, digests, compatibility, and status | Accept self-approved or mutable policy |
 | Governance Engine | Evaluate purpose, consent, jurisdiction, quality, versions, feature eligibility, safety rules, and output obligations | Be bypassed, default-allow, or accept AI decisions as policy |
 | Command gateway | Validate commands and attach actor, purpose, consent, governance, and idempotency context | Write directly to projections or skip governance |
@@ -252,7 +253,7 @@ Governance, consent, provenance, quality validation, version binding, output val
 ## Failure behavior
 
 | Failure | Required behavior |
-|---|---|
+| --- | --- |
 | Governance unavailable/incompatible | Fail closed; do not process or display affected output |
 | Provenance incomplete | Quarantine or reject measurement |
 | Quality rules unavailable | Do not promote data to analytics |
@@ -302,6 +303,7 @@ Related: [Architecture Decisions](architecture-decisions.md), [Initial Data Mode
 ## Document change log
 
 | Version | Effective date | Classification | Change | Approved by |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified ARCH-SYS-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
+| 1.0.2 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. No normative requirements changed. | Andrew Penistone |

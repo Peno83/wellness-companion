@@ -1,12 +1,13 @@
 # Feature Flag Framework
 
 - **Document Identifier:** ARCH-FLAG-001
-- **Version:** 1.0.1
+- **Version:** 1.0.2
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
+- **Status:** active
+- **Governance Approval:** Ratified
 - **Supersedes:** 1.0.0
 - **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
 - **Definition:** A feature flag is a versioned control that enables or disables a bounded product capability without changing its constitutional permissions.
@@ -20,7 +21,7 @@ Every major module must support feature flags so rollout can be staged, monitore
 The framework reserves independent flags for:
 
 | Module | Default before approval | Dependency notes |
-|---|---|---|
+| --- | --- | --- |
 | WHOOP | Off | Requires provider review, consent, provenance contract, deletion, and sync controls |
 | Apple Health | Off | Requires platform permissions, on-device privacy design, provenance, and revocation |
 | Health Connect | Off | Requires platform permissions, provenance, revocation, and Android-specific review |
@@ -153,6 +154,7 @@ Related: [Versioning Framework](versioning-framework.md), [Event Sourcing Standa
 ## Document change log
 
 | Version | Effective date | Classification | Change | Approved by |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified ARCH-FLAG-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
+| 1.0.2 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. No normative requirements changed. | Andrew Penistone |

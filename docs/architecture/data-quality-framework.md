@@ -1,12 +1,13 @@
 # Data Quality Framework
 
 - **Document Identifier:** ARCH-DQ-001
-- **Version:** 1.0.1
+- **Version:** 1.0.2
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
+- **Status:** active
+- **Governance Approval:** Ratified
 - **Supersedes:** 1.0.0
 - **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
 - **Rule:** No incoming measurement may enter analytics, scoring, governance facts, or AI input without a recorded quality decision.
@@ -20,7 +21,7 @@ This framework prevents incomplete, duplicate, misclassified, implausible, or or
 Classifications are composable labels, not a single trust ladder. For example, one record can be `Imported`, `Device Estimated`, and `Incomplete`. A terminal disposition then states whether the record is accepted, quarantined, or rejected.
 
 | Classification | Definition | Processing effect |
-|---|---|---|
+| --- | --- | --- |
 | Verified | Origin and required fields were verified through an approved method; not a claim of medical accuracy | Eligible subject to all other checks |
 | Imported | Arrived through an approved import path | Requires provider/import provenance and contract validation |
 | Manual | Entered or confirmed by the user | Eligible with manual-source confidence; never relabeled device-measured |
@@ -184,6 +185,7 @@ Related: [Source Provenance Standard](source-provenance-standard.md), [Versionin
 ## Document change log
 
 | Version | Effective date | Classification | Change | Approved by |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified ARCH-DQ-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
+| 1.0.2 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. No normative requirements changed. | Andrew Penistone |

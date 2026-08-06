@@ -1,13 +1,14 @@
 # Wellness Companion Governance Constitution
 
 - **Document Identifier:** GOV-CON-001
-- **Version:** 1.1.0
+- **Version:** 1.1.1
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
-- **Supersedes:** 1.0.0
+- **Status:** active
+- **Governance Approval:** Ratified
+- **Supersedes:** 1.1.0
 - **Authority:** Highest governing document
 - **Applies to:** Every product decision, architecture, feature, dataset, calculation, AI interaction, release, operator action, and third-party relationship
 
@@ -271,6 +272,7 @@ Internal AI use is governed by the [AI Use Policy](ai-use-policy.md). Formal rev
 ## Change log
 
 | Version | Effective date | Classification | Change | Approved by | Amendment |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | 1.0.0 | 2026-08-05 | Normative | Initial ratified constitution. The approval record used the incorrect surname “Andrew Penfold”; the accountable person's corrected identity is Andrew Penistone. The historical entry is retained rather than rewritten. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) | Not applicable |
 | 1.1.0 | 2026-08-06 | Normative and administrative | Added the Governance Registry, AI Use Policy, Review Findings Register, and Residual Risk Register to the related binding standards; added Phase 1.3 constitutional cross-references; corrected current owner and approver identity from Andrew Penfold to Andrew Penistone. | Andrew Penistone | [Constitution Amendment 1.1.0](amendments/constitution-1.1.0.md) |
+| 1.1.1 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification as a separate governance approval attribute. No constitutional obligation changed. | Andrew Penistone | Phase 2A.0 metadata remediation |

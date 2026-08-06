@@ -1,13 +1,14 @@
 # Versioning Framework
 
 - **Document Identifier:** ARCH-VER-001
-- **Version:** 1.1.0
+- **Version:** 1.2.0
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
-- **Supersedes:** 1.0.0
+- **Status:** active
+- **Governance Approval:** Ratified
+- **Supersedes:** 1.1.0
 - **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
 - **Rule:** Each stored calculation must reference every applicable version. Missing or incompatible versions make the result invalid for display or downstream use.
 
@@ -18,7 +19,7 @@ Independent versioning prevents a governance, scoring, prompt, policy, analytics
 ## Independently versioned authorities
 
 | Version family | Governs | Required reference |
-|---|---|---|
+| --- | --- | --- |
 | Governance | Constitution and effective policy bundle | Every event, processing decision, calculation, Structured Facts package, and output |
 | Scoring Engine | Transforms, weights, thresholds, missingness, confidence, score rules | Every score and score-derived trend/recommendation |
 | Prompt Templates | System/developer instructions and structured rendering template supplied to an AI | Every AI invocation and AI-assisted output |
@@ -53,9 +54,16 @@ Mutable labels such as `latest`, branch names, deployment names, or provider ali
 ## Document change log
 
 | Version | Effective date | Classification | Change | Approved by |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified framework. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.1.0 | 2026-08-06 | Normative and administrative | Added AI-use-policy, findings-register, and residual-risk-register families; corrected the current owner and approver identity to Andrew Penistone. | Andrew Penistone |
+| 1.2.0 | 2026-08-06 | Normative and administrative | Separated lifecycle status from governance approval and defined the prerequisite for reproducible content digests. | Andrew Penistone |
+
+## Content-digest canonicalisation milestone
+
+No governed artifact may claim a content digest until a canonicalisation method defines encoding, line endings, metadata inclusion, Unicode normalisation, trailing whitespace, final newline handling, and the digest algorithm. Hashing an editor-dependent file representation would not be reproducible evidence.
+
+The canonicalisation method and automated verifier are targeted to **Phase 2A.1 before the first executable governance-policy bundle**. Until that milestone, the metadata finding remains open and each artifact records its immutable Git commit and release tag as available provenance without mislabelling either as the required canonical content digest.
 
 ## Version semantics
 

@@ -1,14 +1,21 @@
 # Architecture decisions
 
-**Status:** Proposed decision log for human approval  
-**Convention:** `Proposed` decisions are binding only after Phase 1 approval. Rejected alternatives may be reconsidered through governance.
+- **Document Identifier:** ARCH-ADR-001
+- **Version:** 0.1.0
+- **Owner:** Engineering Owner (unassigned)
+- **Approver:** Not applicable while draft
+- **Effective Date:** Not applicable while draft
+- **Review Date:** Before implementing any proposed decision
+- **Status:** draft
+- **Governance Approval:** Pending human review
+- **Convention:** `Proposed` decisions are binding only after approval. Rejected alternatives may be reconsidered through governance.
 
 **Authority:** All decisions are subordinate to the [Governance Constitution](../governance/governance-constitution.md). A constitutional conflict invalidates the decision; an ADR cannot authorize an exception.
 
 ## Decision summary
 
 | ID | Decision | Status |
-|---|---|---|
+| --- | --- | --- |
 | ADR-001 | Manual-entry-first, provider-neutral domain | Proposed |
 | ADR-002 | Modular monolith for the first deployment | Proposed |
 | ADR-003 | Relational system of record | Superseded by ADR-012; physical store deferred |

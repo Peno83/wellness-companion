@@ -1,19 +1,21 @@
 # Constitution Amendment 1.1.0
 
 - **Document Identifier:** GOV-CON-AMD-1.1.0
-- **Version:** 1.0.0
+- **Version:** 1.0.1
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
+- **Status:** active
+- **Governance Approval:** Ratified
+- **Supersedes:** 1.0.0
 - **Amends:** Governance Constitution 1.0.0
 - **Produces:** Governance Constitution 1.1.0
 
 ## Amendment record
 
 | Field | Record |
-|---|---|
+| --- | --- |
 | What changed | Added constitutional references to the AI Use Policy, Review Findings Register, and Residual Risk Register; added those documents and the Governance Registry to the related binding standards; corrected current owner and approver identity from Andrew Penfold to Andrew Penistone. |
 | Why it changed | Phase 1.3 established controls for internal AI use, findings disposition, and residual-risk acceptance. Phase 1.4 repairs the missing semantic-version progression and preserves the identity correction as an explicit historical amendment. |
 | Approved by | Andrew Penistone, Constitutional Authority |
@@ -36,3 +38,10 @@ Andrew Penistone approved this amendment on 2026-08-06. Claude AI's Phase 1.3 ga
 - [Governance Constitution](../governance-constitution.md)
 - [Governance Registry](../governance-registry.md)
 - [Phase 1.3 Gate Review](../../reviews/2026-08-06-phase-1.3-gate-review.md)
+
+## Document change log
+
+| Version | Effective date | Classification | Change | Approved by |
+| --- | --- | --- | --- | --- |
+| 1.0.0 | 2026-08-06 | Initial normative release | Recorded Constitution Amendment 1.1.0. | Andrew Penistone |
+| 1.0.1 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. | Andrew Penistone |

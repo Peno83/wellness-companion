@@ -1,6 +1,6 @@
 # External URLs are not fetched during local or CI documentation checks.
 # Local files and fragments remain enabled so repository links and anchors fail closed.
 offline = true
-include_fragments = true
+include_fragments = "full"
 max_retries = 0
 require_https = true

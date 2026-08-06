@@ -1,12 +1,14 @@
 # Residual Risk Register
 
 - **Document Identifier:** GOV-RISK-001
-- **Version:** 1.0.0
+- **Version:** 1.0.1
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
+- **Status:** active
+- **Governance Approval:** Ratified
+- **Supersedes:** 1.0.0
 
 ## Purpose
 
@@ -15,7 +17,7 @@ This register records risks that remain after current controls. Acceptance is na
 ## Accepted residual risks
 
 | ID | Residual risk | Acceptance rationale | Compensating controls | Owner | Scope and expiry | Status |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | R-001 | Single founder governance concentrates constitutional and governance decisions | The project is pre-implementation, has no users or personal data, and cannot yet sustain a multi-person governance body. Central accountability is clearer than fictitious independence at this stage. | Public, versioned decisions; advisory review; findings register; line-by-line human approval; quarterly review; G3 release remains blocked without required independent human review | Andrew Penistone | Documentation and low-risk foundation planning only; review 2026-11-05 | Accepted |
 | R-002 | Single release authority creates key-person, availability, and self-approval risk | One named release authority is proportionate before any deployable application exists and prevents ambiguous approval. It is not sufficient for a high-risk or user-data release. | Protected review process to be activated; documented release evidence; no delegation by silence; no G3 release without separation of duties | Andrew Penistone | Pre-implementation documentation only; expires before external beta or 2026-11-05 | Accepted |
 | R-003 | Single dispute resolver may resolve disputes in their own favor | A named resolver avoids unresolved authority during the founder stage, but is not independent. The risk is acceptable only while disputes cannot affect users or personal data. | Written decision and rationale; preserved dissent; external qualified human review for G3 disputes; Constitution cannot be waived | Andrew Penistone | No user-impacting or G3 dispute; review 2026-11-05 | Accepted |
@@ -30,3 +32,10 @@ These acceptances do not authorize collection of personal data, health features,
 ## Review and closure
 
 The owner reviews each risk on its expiry date, on a material scope change, and before the target activity. Review may reduce, renew, transfer, or reject the risk. Renewal requires current evidence, a new rationale, a new expiry, and named human approval. Closed risks remain in immutable history with closure evidence.
+
+## Document change log
+
+| Version | Effective date | Classification | Change | Approved by |
+| --- | --- | --- | --- | --- |
+| 1.0.0 | 2026-08-06 | Initial normative release | Established the residual-risk register and initial acceptances. | Andrew Penistone |
+| 1.0.1 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. | Andrew Penistone |

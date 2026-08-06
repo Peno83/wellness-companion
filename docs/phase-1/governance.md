@@ -1,12 +1,13 @@
 # Governance specification
 
 - **Document Identifier:** GOV-OPS-001
-- **Version:** 1.0.1
+- **Version:** 1.0.2
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
+- **Status:** active
+- **Governance Approval:** Ratified
 - **Supersedes:** 1.0.0
 - **Purpose:** Define who may approve changes that affect users, sensitive data, scoring, or safety.
 
@@ -34,7 +35,7 @@
 One person may hold multiple roles in a small team, but no author may self-approve a high-risk change.
 
 | Role | Accountable for |
-|---|---|
+| --- | --- |
 | Product owner | User outcomes, scope, prioritization, and launch decision |
 | Wellness safety reviewer | Non-clinical boundary, safety language, escalation rules, content evidence |
 | Privacy lead | Purpose limitation, notices, consent, rights, retention, processor review |
@@ -47,7 +48,7 @@ One person may hold multiple roles in a small team, but no author may self-appro
 ## Decision classes
 
 | Class | Examples | Required approval |
-|---|---|---|
+| --- | --- | --- |
 | G0: editorial | Typo without meaning change | Author plus normal review |
 | G1: routine | UI layout, non-sensitive telemetry label | Product or engineering owner |
 | G2: material | New collected field, score threshold, retention change, recommendation category | Product plus relevant privacy/safety/scoring owner |
@@ -73,7 +74,7 @@ Every user-facing wellness claim needs an evidence record containing the claim, 
 Consent is granular by purpose, not a single blanket checkbox. Proposed purposes are:
 
 | Purpose | Required for core product? | Default |
-|---|---:|---|
+| --- | ---: | --- |
 | Account operation and security | Yes | Required notice/legal basis review |
 | Store manual wellness observations | Yes for saved history | Off until explicit action/consent |
 | Compute personal summaries and suggestions | Yes for that feature | Off until consent |
@@ -105,7 +106,7 @@ The detailed method is in [scoring methodology](scoring-methodology.md).
 ### Classification
 
 | Class | Examples | Minimum handling |
-|---|---|---|
+| --- | --- | --- |
 | Restricted wellness | observations, notes, derived scores, recommendations | Strong encryption, explicit purpose, tight access, no general logs |
 | Restricted identity | email, authentication identifiers, recovery data | Separate logical access, masked support views |
 | Confidential operations | audit events, incident records, configuration | Role-based access and retention schedule |
@@ -163,7 +164,7 @@ The product owner owns go/no-go. Security, privacy, and wellness safety owners e
 ## Incident severity
 
 | Severity | Example | Initial response target |
-|---|---|---:|
+| --- | --- | ---: |
 | SEV-1 | Credible risk of widespread serious harm or sensitive-data exposure | 15 minutes |
 | SEV-2 | Unsafe advice or unauthorized access with limited scope | 1 hour |
 | SEV-3 | Incorrect score, deletion defect, or misleading copy without immediate danger | 1 business day |
@@ -189,6 +190,7 @@ Related documents: [Governance Constitution](../governance/governance-constituti
 ## Document change log
 
 | Version | Effective date | Classification | Change | Approved by |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified GOV-OPS-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
+| 1.0.2 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. No normative requirements changed. | Andrew Penistone |

@@ -1,8 +1,14 @@
 # Scoring methodology
 
-**Status:** Proposed method for validation, not approved for production  
-**Owner:** Scoring owner  
-**Purpose:** Define transparent wellness summaries without diagnostic or causal claims.
+- **Document Identifier:** SCORE-METH-001
+- **Version:** 0.1.0
+- **Owner:** Scoring Owner (unassigned)
+- **Approver:** Not applicable while draft
+- **Effective Date:** Not applicable while draft
+- **Review Date:** Before scoring implementation
+- **Status:** draft
+- **Governance Approval:** Not approved for production
+- **Purpose:** Define transparent wellness summaries without diagnostic or causal claims.
 
 **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md). Each result must carry exact input-event lineage, all applicable versions, and the explanation required by the [Explainability Standard](../architecture/explainability-standard.md).
 
@@ -27,7 +33,7 @@ The method should prefer domain scores for sleep, perceived state, stress/recove
 Initial manual-entry candidates are:
 
 | Domain | Inputs | Direction after transformation |
-|---|---|---|
+| --- | --- | --- |
 | Sleep | duration, perceived quality | More favorable values increase domain score within reviewed ranges |
 | Perceived state | energy, mood | Higher reported values increase domain score |
 | Stress/recovery | stress, soreness | Higher raw values decrease domain score |
@@ -128,7 +134,7 @@ Only present metrics participate in the denominator. However, a domain score is 
 Proposed starting weights, subject to validation:
 
 | Domain | Metric | Weight |
-|---|---|---:|
+| --- | --- | ---: |
 | Sleep | duration | 0.50 |
 | Sleep | perceived quality | 0.50 |
 | Perceived state | energy | 0.50 |
@@ -173,7 +179,7 @@ Each factor is within `[0, 1]`:
 Bands:
 
 | Support | Display |
-|---:|---|
+| ---: | --- |
 | `<0.45` | Suppress score; show insufficient information |
 | `0.45–<0.70` | Low confidence |
 | `0.70–<0.85` | Moderate confidence |
@@ -219,7 +225,7 @@ Ranking should favor relevance, user preference, novelty within limits, and low 
 ## Missing, stale, and conflicting data
 
 | Condition | Behavior |
-|---|---|
+| --- | --- |
 | Missing input | Exclude it; reduce coverage; never substitute zero |
 | User declined | Exclude and do not repeatedly pressure collection |
 | Stale observation | Exclude after domain expiry; clearly label before expiry |

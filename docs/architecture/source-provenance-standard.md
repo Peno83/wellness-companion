@@ -1,12 +1,13 @@
 # Source Provenance Standard
 
 - **Document Identifier:** ARCH-PROV-001
-- **Version:** 1.0.1
+- **Version:** 1.0.2
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
+- **Status:** active
+- **Governance Approval:** Ratified
 - **Supersedes:** 1.0.0
 - **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
 - **Applies to:** Every manual, imported, device-originated, calculated, corrected, or migrated measurement
@@ -22,7 +23,7 @@ Provenance records where a measurement came from and every material transformati
 Every measurement must contain the following fields. Names are conceptual; the physical schema is deferred.
 
 | Required field | Meaning | Rule |
-|---|---|---|
+| --- | --- | --- |
 | Source | Human-readable origin category or provider | Required; controlled vocabulary |
 | Source Identifier | Stable identifier for the originating source/account context | Required; pseudonymous where possible; never a credential |
 | Device | Device or capture surface that produced or entered the record | Required; `not_applicable` allowed only with reason |
@@ -159,6 +160,7 @@ Related: [Data Quality Framework](data-quality-framework.md), [Versioning Framew
 ## Document change log
 
 | Version | Effective date | Classification | Change | Approved by |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified ARCH-PROV-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
+| 1.0.2 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. No normative requirements changed. | Andrew Penistone |

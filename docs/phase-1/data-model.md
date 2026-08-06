@@ -1,7 +1,14 @@
 # Initial data model
 
-**Status:** Conceptual, proposed for review  
-**Purpose:** Define domain meaning and constraints before choosing physical schemas or writing migrations.
+- **Document Identifier:** DATA-MOD-001
+- **Version:** 0.1.0
+- **Owner:** Data Steward (unassigned)
+- **Approver:** Not applicable while draft
+- **Effective Date:** Not applicable while draft
+- **Review Date:** Before data-model implementation
+- **Status:** draft
+- **Governance Approval:** Pending human review
+- **Purpose:** Define domain meaning and constraints before choosing physical schemas or writing migrations.
 
 **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md). Phase 1.1 adopts event sourcing: the entities below describe governed projections and immutable event payload contracts, not directly mutable records.
 
@@ -49,7 +56,7 @@ The binding event envelope is defined by the [Event Sourcing Standard](../archit
 Pseudonymous internal owner of all user data.
 
 | Field | Meaning / constraint |
-|---|---|
+| --- | --- |
 | `subject_id` | Random, non-guessable identifier; never reused |
 | `status` | `active`, `suspended`, `deletion_pending`, `deleted` |
 | `created_at` | Server timestamp in UTC |
@@ -62,7 +69,7 @@ Authentication identity is stored in a separate identity partition and maps to `
 Stores minimal preferences needed for product behavior.
 
 | Field | Meaning / constraint |
-|---|---|
+| --- | --- |
 | `subject_id` | Unique owner reference |
 | `timezone` | IANA timezone identifier; required for local-day calculations |
 | `locale` | Supported BCP 47 language/region tag |
@@ -103,7 +110,7 @@ Fields: `metric_code`, `display_name`, `value_type`, `canonical_unit`, `valid_ra
 Initial proposed metrics:
 
 | Code | Type | Canonical representation | Proposed input range |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `sleep_duration` | duration | minutes | 0–1,440 |
 | `sleep_quality` | ordinal | integer | 1–5 |
 | `energy` | ordinal | integer | 1–5 |
@@ -121,7 +128,7 @@ Ranges are input-validity limits, not healthy targets. Final fields and ranges r
 Immutable version of one observed value.
 
 | Field | Meaning / constraint |
-|---|---|
+| --- | --- |
 | `observation_id` | Stable logical observation identifier |
 | `observation_version_id` | Unique immutable version identifier |
 | `subject_id` / `check_in_id` | Ownership and grouping |
@@ -203,7 +210,7 @@ Audit events exclude observation values, notes, and recommendation bodies.
 Exact periods require privacy/legal approval. The system should support configurable schedules by category:
 
 | Category | Proposed policy shape |
-|---|---|
+| --- | --- |
 | Active account wellness data | Retain while account is active and purpose remains valid |
 | Deleted account transactional data | Delete promptly through workflow; target to be approved |
 | Encrypted backups | Age out on fixed rotation; prevent restore from reactivating tombstoned subjects |

@@ -1,6 +1,15 @@
 # Wellness Companion Documentation
 
-**Current phase:** Phase 1.4, governance record integrity and repository-quality enforcement only
+- **Document Identifier:** DOC-IDX-001
+- **Version:** 1.0.0
+- **Owner:** Andrew Penistone
+- **Approver:** Andrew Penistone
+- **Effective Date:** 2026-08-06
+- **Review Date:** 2026-11-05
+- **Status:** active
+- **Governance Approval:** Approved
+
+**Current phase:** Phase 2A.0, repository enforcement and CI remediation only
 
 ## Authority order
 
@@ -27,6 +36,10 @@ Subordinate documents cannot create exceptions to higher documents. A conflict b
 - [Event Sourcing Standard](architecture/event-sourcing.md)
 - [System Architecture](phase-1/system-architecture.md)
 
+## Architecture decisions
+
+- [ADR-013: Markdown lint policy exceptions](decisions/ADR-013-markdown-lint-policy.md)
+
 ## Security and privacy
 
 - [Privacy by Design Standard](security/privacy-by-design.md)
@@ -41,3 +54,4 @@ These documents and repository controls define future behavior. They do not crea
 - Phase 1.2 introduced `.github/workflows/future-ci.yml` as a disabled placeholder.
 - Phase 1.3 superseded and removed that placeholder with `.github/workflows/documentation-quality.yml`.
 - Phase 1.4 made the documentation workflow enforceable across all repository changes, added phase-boundary and secret-pattern checks, and pinned action dependencies to immutable commits.
+- Phase 2A.0 restricts executable workflows to an exact allowlist, validates approved workflow content, expands secret detection, and makes all documentation checks pass locally.

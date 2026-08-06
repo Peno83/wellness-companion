@@ -1,12 +1,13 @@
 # Security design
 
 - **Document Identifier:** SEC-DES-001
-- **Version:** 1.0.1
+- **Version:** 1.0.2
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
-- **Status:** Ratified
+- **Status:** active
+- **Governance Approval:** Ratified
 - **Supersedes:** 1.0.0
 - **Security objective:** Protect confidentiality, integrity, availability, user agency, and safety of wellness data throughout its lifecycle.
 
@@ -44,7 +45,7 @@
 ## Key abuse cases and controls
 
 | Threat | Impact | Preventive controls | Detection/recovery |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Account takeover | Exposure or deletion of wellness history | Strong session controls, breached-password defense or passkeys, step-up verification for export/delete | Login anomaly alerts, session revocation, user notification |
 | Broken object authorization | One user reads another user’s data | Server-derived subject scope, deny-by-default authorization, opaque IDs, ownership checks on every query | Cross-tenant authorization tests and audit alerts |
 | Sensitive data in logs | Broad internal exposure | Structured allowlisted logging, payload redaction, no URLs with content | Automated secret/content scanning and retention purge |
@@ -159,7 +160,7 @@ Deployment admission must also reject releases without an approved governance ve
 ## Security acceptance gates
 
 | Gate | Evidence required |
-|---|---|
+| --- | --- |
 | Threat coverage | Reviewed threat model with owners and residual risks |
 | Access control | Automated horizontal/vertical authorization tests; privileged access review |
 | Privacy | Data inventory, purpose map, retention schedule, export/deletion test |
@@ -181,6 +182,7 @@ Related: [Governance Constitution](../governance/governance-constitution.md), [p
 ## Document change log
 
 | Version | Effective date | Classification | Change | Approved by |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified SEC-DES-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
+| 1.0.2 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. No normative requirements changed. | Andrew Penistone |
