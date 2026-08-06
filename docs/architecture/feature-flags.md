@@ -1,12 +1,13 @@
 # Feature Flag Framework
 
 - **Document Identifier:** ARCH-FLAG-001
-- **Version:** 1.0.0
-- **Owner:** Andrew Penfold
-- **Approver:** Andrew Penfold
-- **Effective Date:** 2026-08-05
+- **Version:** 1.0.1
+- **Owner:** Andrew Penistone
+- **Approver:** Andrew Penistone
+- **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
 - **Status:** Ratified
+- **Supersedes:** 1.0.0
 - **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
 - **Definition:** A feature flag is a versioned control that enables or disables a bounded product capability without changing its constitutional permissions.
 
@@ -148,3 +149,10 @@ Flag creation, approval, value change, cohort change, override, expiration, kill
 - Expiry defaults and removal deadlines for stale flags.
 
 Related: [Versioning Framework](versioning-framework.md), [Event Sourcing Standard](event-sourcing.md), and [Privacy by Design Standard](../security/privacy-by-design.md).
+
+## Document change log
+
+| Version | Effective date | Classification | Change | Approved by |
+|---|---|---|---|---|
+| 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified ARCH-FLAG-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
+| 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |

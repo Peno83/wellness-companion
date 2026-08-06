@@ -1,12 +1,13 @@
 # Governance specification
 
 - **Document Identifier:** GOV-OPS-001
-- **Version:** 1.0.0
-- **Owner:** Andrew Penfold
-- **Approver:** Andrew Penfold
-- **Effective Date:** 2026-08-05
+- **Version:** 1.0.1
+- **Owner:** Andrew Penistone
+- **Approver:** Andrew Penistone
+- **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
 - **Status:** Ratified
+- **Supersedes:** 1.0.0
 - **Purpose:** Define who may approve changes that affect users, sensitive data, scoring, or safety.
 
 **Authority:** This operational specification is subordinate to the [Governance Constitution](../governance/governance-constitution.md). If the documents conflict, the constitution controls and affected work stops until this specification is corrected. This specification cannot create an exception to the constitution.
@@ -184,3 +185,10 @@ Targets are provisional until staffing and support hours are approved. Incident 
 Before Phase 2, humans must assign role owners, approve the product boundary, choose launch jurisdictions, set provisional retention, approve the urgent-risk posture, and decide whether external legal or clinical-safety review is required.
 
 Related documents: [Governance Constitution](../governance/governance-constitution.md), [product requirements](product-requirements.md), [security design](security-design.md), and [architecture decisions](architecture-decisions.md).
+
+## Document change log
+
+| Version | Effective date | Classification | Change | Approved by |
+|---|---|---|---|---|
+| 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified GOV-OPS-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
+| 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |

@@ -1,12 +1,13 @@
 # System Architecture
 
 - **Document Identifier:** ARCH-SYS-001
-- **Version:** 1.0.0
-- **Owner:** Andrew Penfold
-- **Approver:** Andrew Penfold
-- **Effective Date:** 2026-08-05
+- **Version:** 1.0.1
+- **Owner:** Andrew Penistone
+- **Approver:** Andrew Penistone
+- **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
 - **Status:** Ratified
+- **Supersedes:** 1.0.0
 - **Scope:** Logical target architecture, not an implementation
 - **Highest authority:** [Governance Constitution](../governance/governance-constitution.md)
 - **External integrations:** Explicitly excluded from Phase 1.1
@@ -297,3 +298,10 @@ No adapter, SDK, credential, webhook, network client, database, authentication i
 - Whether any AI usage can produce enough user value to justify its privacy and safety cost.
 
 Related: [Architecture Decisions](architecture-decisions.md), [Initial Data Model](data-model.md), and [Implementation Roadmap](implementation-roadmap.md).
+
+## Document change log
+
+| Version | Effective date | Classification | Change | Approved by |
+|---|---|---|---|---|
+| 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified ARCH-SYS-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
+| 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |

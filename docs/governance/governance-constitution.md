@@ -1,12 +1,13 @@
 # Wellness Companion Governance Constitution
 
 - **Document Identifier:** GOV-CON-001
-- **Version:** 1.0.0
-- **Owner:** Andrew Penfold
-- **Approver:** Andrew Penfold
-- **Effective Date:** 2026-08-05
+- **Version:** 1.1.0
+- **Owner:** Andrew Penistone
+- **Approver:** Andrew Penistone
+- **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
 - **Status:** Ratified
+- **Supersedes:** 1.0.0
 - **Authority:** Highest governing document
 - **Applies to:** Every product decision, architecture, feature, dataset, calculation, AI interaction, release, operator action, and third-party relationship
 
@@ -250,9 +251,12 @@ Emergency action may disable processing to protect users, data, or service integ
 
 The [Governance Registry](governance-registry.md) names the Constitutional Authority, Governance Owner, Independent Technical Reviewer, Implementation Authority, Release Authority, and Dispute Resolver. Any implementation work outside registered authority or dependent on unresolved constitutional language remains blocked.
 
+Internal AI use is governed by the [AI Use Policy](ai-use-policy.md). Formal review findings and their dispositions are governed by the [Review Findings Register](review-findings-register.md). Any risk accepted after controls is governed by the [Residual Risk Register](residual-risk-register.md). None of these documents may create an exception to this constitution.
+
 ## Related binding standards
 
 - [Source Provenance Standard](../architecture/source-provenance-standard.md)
+- [Governance Registry](governance-registry.md)
 - [Data Quality Framework](../architecture/data-quality-framework.md)
 - [Versioning Framework](../architecture/versioning-framework.md)
 - [AI Isolation Architecture](../phase-1/system-architecture.md#mandatory-governed-processing-pipeline)
@@ -260,3 +264,13 @@ The [Governance Registry](governance-registry.md) names the Constitutional Autho
 - [Feature Flag Framework](../architecture/feature-flags.md)
 - [Event Sourcing Standard](../architecture/event-sourcing.md)
 - [Privacy by Design Standard](../security/privacy-by-design.md)
+- [AI Use Policy](ai-use-policy.md)
+- [Review Findings Register](review-findings-register.md)
+- [Residual Risk Register](residual-risk-register.md)
+
+## Change log
+
+| Version | Effective date | Classification | Change | Approved by | Amendment |
+|---|---|---|---|---|---|
+| 1.0.0 | 2026-08-05 | Normative | Initial ratified constitution. The approval record used the incorrect surname “Andrew Penfold”; the accountable person's corrected identity is Andrew Penistone. The historical entry is retained rather than rewritten. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) | Not applicable |
+| 1.1.0 | 2026-08-06 | Normative and administrative | Added the Governance Registry, AI Use Policy, Review Findings Register, and Residual Risk Register to the related binding standards; added Phase 1.3 constitutional cross-references; corrected current owner and approver identity from Andrew Penfold to Andrew Penistone. | Andrew Penistone | [Constitution Amendment 1.1.0](amendments/constitution-1.1.0.md) |

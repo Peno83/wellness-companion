@@ -1,0 +1,81 @@
+name: Documentation quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: documentation-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  markdown-lint:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@992badcdf24e3b8eb7e87ff9287fe931bcb00c6e # v20
+        with:
+          config: ".markdownlint.jsonc"
+          globs: "**/*.md"
+
+  broken-links:
+    name: Broken links
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Check Markdown links
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
+        with:
+          args: "--no-progress --config .lychee.toml '**/*.md'"
+          fail: true
+
+  spelling:
+    name: Spelling
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Check spelling
+        uses: streetsidesoftware/cspell-action@76c6f6d52abd57f4bcab5f3fde1bbd4f19a99eb0 # v7
+        with:
+          files: "**/*.md"
+          config: ".cspell.json"
+          incremental_files_only: false
+
+  phase-boundary:
+    name: Phase boundary
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Test boundary rules
+        shell: pwsh
+        run: ./.github/scripts/Test-PhaseBoundary.ps1 -SelfTest
+      - name: Enforce Phase 1 boundary
+        shell: pwsh
+        run: ./.github/scripts/Test-PhaseBoundary.ps1
+
+  secret-patterns:
+    name: Secret patterns
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Check repository content
+        shell: pwsh
+        run: ./.github/scripts/Test-SecretPatterns.ps1

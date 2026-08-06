@@ -1,12 +1,13 @@
 # Data Quality Framework
 
 - **Document Identifier:** ARCH-DQ-001
-- **Version:** 1.0.0
-- **Owner:** Andrew Penfold
-- **Approver:** Andrew Penfold
-- **Effective Date:** 2026-08-05
+- **Version:** 1.0.1
+- **Owner:** Andrew Penistone
+- **Approver:** Andrew Penistone
+- **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
 - **Status:** Ratified
+- **Supersedes:** 1.0.0
 - **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
 - **Rule:** No incoming measurement may enter analytics, scoring, governance facts, or AI input without a recorded quality decision.
 
@@ -179,3 +180,10 @@ Track counts and rates by source contract, metric code, classification, disposit
 - User correction flows for ambiguous timezones and units.
 
 Related: [Source Provenance Standard](source-provenance-standard.md), [Versioning Framework](versioning-framework.md), and [Explainability Standard](explainability-standard.md).
+
+## Document change log
+
+| Version | Effective date | Classification | Change | Approved by |
+|---|---|---|---|---|
+| 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified ARCH-DQ-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
+| 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |

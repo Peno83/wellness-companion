@@ -1,0 +1,25 @@
+{
+  "version": "0.2",
+  "language": "en-GB",
+  "useGitignore": true,
+  "enableGlobDot": true,
+  "files": ["**/*.md"],
+  "ignorePaths": [".git/**"],
+  "words": [
+    "BCP",
+    "CODEOWNERS",
+    "Codex",
+    "DSAR",
+    "idempotency",
+    "non-diagnostic",
+    "Penistone",
+    "provenance",
+    "pseudonymous",
+    "rehydration",
+    "subprocessor",
+    "subprocessors",
+    "tombstone",
+    "tombstoned",
+    "WHOOP"
+  ]
+}

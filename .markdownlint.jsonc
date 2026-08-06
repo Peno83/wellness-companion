@@ -1,0 +1,12 @@
+{
+  // Governance tables and evidence references are intentionally kept on one
+  // diff-reviewable line. MD013 is disabled rather than weakening other rules.
+  "MD013": false,
+  "MD024": {
+    "siblings_only": true
+  },
+  // Independent review evidence uses bold finding labels inside severity
+  // sections; preserving those records takes precedence over MD036.
+  "MD036": false,
+  "MD041": true
+}

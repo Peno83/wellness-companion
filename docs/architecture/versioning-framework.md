@@ -1,12 +1,13 @@
 # Versioning Framework
 
 - **Document Identifier:** ARCH-VER-001
-- **Version:** 1.0.0
-- **Owner:** Andrew Penfold
-- **Approver:** Andrew Penfold
-- **Effective Date:** 2026-08-05
+- **Version:** 1.1.0
+- **Owner:** Andrew Penistone
+- **Approver:** Andrew Penistone
+- **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
 - **Status:** Ratified
+- **Supersedes:** 1.0.0
 - **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
 - **Rule:** Each stored calculation must reference every applicable version. Missing or incompatible versions make the result invalid for display or downstream use.
 
@@ -26,6 +27,9 @@ Independent versioning prevents a governance, scoring, prompt, policy, analytics
 | Data Model | Event, entity, metric, and provenance schema semantics | Every stored event/record and migration result |
 | API Contracts | Request/response or internal module contract | Every accepted request/event at that boundary; exact persistence may be trace metadata |
 | Output Schemas | Structured Facts and user-output shape/constraints | Every Structured Facts package, AI response, validated output, and export |
+| AI Use Policy | Approved internal providers, prompts, privacy controls, review, and escalation | Every AI-assisted governed artifact and recorded AI interaction |
+| Review Findings Register | Findings, dispositions, owners, status, and evidence | Every formal governance review and closure decision |
+| Residual Risk Register | Accepted risks, controls, acceptor, scope, and expiry | Every decision that proceeds with material residual risk |
 
 Normalization/calculation rules that are not part of scoring use a separately identified calculation component version inside the Analytics Engine or a named normalization family. Feature-flag configuration, recommendation content, metric definitions, quality rules, and validator rules also carry immutable version identifiers even when not listed as top-level families.
 
@@ -45,6 +49,13 @@ Each released artifact contains:
 - governance version that authorized the release.
 
 Mutable labels such as `latest`, branch names, deployment names, or provider aliases are not valid stored version references.
+
+## Document change log
+
+| Version | Effective date | Classification | Change | Approved by |
+|---|---|---|---|---|
+| 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified framework. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
+| 1.1.0 | 2026-08-06 | Normative and administrative | Added AI-use-policy, findings-register, and residual-risk-register families; corrected the current owner and approver identity to Andrew Penistone. | Andrew Penistone |
 
 ## Version semantics
 

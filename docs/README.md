@@ -1,6 +1,6 @@
 # Wellness Companion Documentation
 
-**Current phase:** Phase 1.2, governance and repository readiness only
+**Current phase:** Phase 1.4, governance record integrity and repository-quality enforcement only
 
 ## Authority order
 
@@ -10,6 +10,12 @@
 4. [Phase 1 product and technical documents](phase-1/README.md) — requirements, proposed methods, operational governance, decisions, and roadmap.
 
 Subordinate documents cannot create exceptions to higher documents. A conflict blocks the affected work until human governance review resolves it.
+
+## Governance controls
+
+- [AI Use Policy](governance/ai-use-policy.md)
+- [Review Findings Register](governance/review-findings-register.md)
+- [Residual Risk Register](governance/residual-risk-register.md)
 
 ## Architecture standards
 
@@ -28,4 +34,10 @@ Subordinate documents cannot create exceptions to higher documents. A conflict b
 
 ## Phase boundary
 
-These documents and repository controls define future behavior. They do not create application code, modules, infrastructure, provider connections, databases, authentication, APIs, SDKs, packages, credentials, or frontend pages. The workflow skeleton is disabled and runs no build.
+These documents and repository controls define future behavior. They do not create application code, modules, infrastructure, provider connections, databases, authentication, APIs, SDKs, packages, credentials, or frontend pages. GitHub Actions runs documentation-only Markdown lint, broken-link, and spelling checks; it runs no application build.
+
+## Repository control history
+
+- Phase 1.2 introduced `.github/workflows/future-ci.yml` as a disabled placeholder.
+- Phase 1.3 superseded and removed that placeholder with `.github/workflows/documentation-quality.yml`.
+- Phase 1.4 made the documentation workflow enforceable across all repository changes, added phase-boundary and secret-pattern checks, and pinned action dependencies to immutable commits.

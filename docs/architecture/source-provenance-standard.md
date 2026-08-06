@@ -1,12 +1,13 @@
 # Source Provenance Standard
 
 - **Document Identifier:** ARCH-PROV-001
-- **Version:** 1.0.0
-- **Owner:** Andrew Penfold
-- **Approver:** Andrew Penfold
-- **Effective Date:** 2026-08-05
+- **Version:** 1.0.1
+- **Owner:** Andrew Penistone
+- **Approver:** Andrew Penistone
+- **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
 - **Status:** Ratified
+- **Supersedes:** 1.0.0
 - **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
 - **Applies to:** Every manual, imported, device-originated, calculated, corrected, or migrated measurement
 
@@ -154,3 +155,10 @@ Exports must include a provenance dictionary and, for each measurement, its orig
 - Integrity mechanism for source manifests and exports.
 
 Related: [Data Quality Framework](data-quality-framework.md), [Versioning Framework](versioning-framework.md), and [Event Sourcing Standard](event-sourcing.md).
+
+## Document change log
+
+| Version | Effective date | Classification | Change | Approved by |
+|---|---|---|---|---|
+| 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified ARCH-PROV-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
+| 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
