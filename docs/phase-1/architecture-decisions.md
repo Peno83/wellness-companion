@@ -1,13 +1,14 @@
 # Architecture decisions
 
 - **Document Identifier:** ARCH-ADR-001
-- **Version:** 0.1.0
+- **Version:** 0.1.1
 - **Owner:** Engineering Owner (unassigned)
 - **Approver:** Not applicable while draft
 - **Effective Date:** Not applicable while draft
 - **Review Date:** Before implementing any proposed decision
 - **Status:** draft
 - **Governance Approval:** Pending human review
+- **Supersedes:** 0.1.0
 - **Convention:** `Proposed` decisions are binding only after approval. Rejected alternatives may be reconsidered through governance.
 
 **Authority:** All decisions are subordinate to the [Governance Constitution](../governance/governance-constitution.md). A constitutional conflict invalidates the decision; an ADR cannot authorize an exception.
@@ -31,6 +32,12 @@
 | ADR-013 | Raw-data-to-AI isolation with mandatory output validation | Proposed |
 | ADR-014 | Independent versions and stored explanation manifests | Proposed |
 | ADR-015 | Feature flags for major modules, never core controls | Proposed |
+| ADR-016 | Markdown lint policy exceptions | Active; see standalone ADR |
+
+**Identifier correction:** Phase 2A.0 introduced a standalone Markdown lint
+policy using the already assigned ADR-013 identifier. The raw-data-to-AI
+isolation decision retains its original ADR-013 identifier. The later Markdown
+lint policy is corrected to ADR-016, preserving both decisions and their history.
 
 ## ADR-001: Manual-entry-first, provider-neutral domain
 
@@ -168,6 +175,10 @@
 
 **Alternatives:** AI with read-only database access (still excessive and bypassable); AI before governance (unsafe facts may be generated); model self-review (not independent enforcement).
 
+**Identifier correction note:** A later standalone Markdown lint policy was
+temporarily labelled ADR-013 during Phase 2A.0. That document is now ADR-016.
+This AI-isolation decision remains ADR-013 and was not overwritten.
+
 ## ADR-014: Independent versions and stored explanation manifests
 
 **Context:** A single application version cannot reproduce calculations or show which governance, analytics, prompt, AI, contract, and schema rules applied.
@@ -202,3 +213,10 @@
 - Structured Facts and explanation schemas.
 
 Related: [Governance Constitution](../governance/governance-constitution.md), [system architecture](system-architecture.md), [event sourcing](../architecture/event-sourcing.md), [security design](security-design.md), and [roadmap](implementation-roadmap.md).
+
+## Document change log
+
+| Version | Effective date | Change | Approved by |
+| --- | --- | --- | --- |
+| 0.1.0 | Not applicable while draft | Initial draft architecture decision register. | Pending human review |
+| 0.1.1 | Not applicable while draft | Preserved AI isolation as ADR-013 and corrected the later Markdown lint policy identifier to ADR-016. | Pending human review |

@@ -51,9 +51,9 @@ jobs:
       - name: Check spelling
         uses: streetsidesoftware/cspell-action@76c6f6d52abd57f4bcab5f3fde1bbd4f19a99eb0 # v7
         with:
-          files: "**/*.md"
           config: ".cspell.json"
           incremental_files_only: false
+          use_cspell_files: true
 
   phase-boundary:
     name: Phase boundary

@@ -4,9 +4,6 @@ param(
     [string] $Root = (Get-Location).Path,
 
     [Parameter()]
-    [string] $WorkflowPath = '.github/workflows/documentation-quality.yml',
-
-    [Parameter()]
     [switch] $SelfTest
 )
 
@@ -69,6 +66,40 @@ function Test-WorkflowContent {
     return @($violations | Sort-Object -Unique)
 }
 
+function Test-WorkflowDirectory {
+    param([Parameter(Mandatory)][string] $DirectoryRoot)
+
+    $violations = @()
+    $workflowRoot = Join-Path $DirectoryRoot '.github/workflows'
+    if (-not (Test-Path -LiteralPath $workflowRoot -PathType Container)) {
+        return @('workflow directory is missing')
+    }
+
+    $rootPath = [IO.Path]::GetFullPath($DirectoryRoot).TrimEnd([char[]]@('\', '/'))
+    $workflowFiles = @(
+        Get-ChildItem -LiteralPath $workflowRoot -File |
+            Where-Object { $_.Extension -in @('.yml', '.yaml') }
+    )
+    foreach ($workflowFile in $workflowFiles) {
+        $relativePath = $workflowFile.FullName.Substring($rootPath.Length).TrimStart([char[]]@('\', '/')).Replace('\', '/')
+        $content = Get-Content -LiteralPath $workflowFile.FullName -Raw
+        foreach ($violation in (Test-WorkflowContent -Path $relativePath -Content $content)) {
+            $violations += "$relativePath`: $violation"
+        }
+    }
+
+    if ($workflowFiles.Count -eq 0) {
+        $violations += 'approved workflow is missing'
+    }
+    elseif ($approvedWorkflowPath -notin @($workflowFiles | ForEach-Object {
+        $_.FullName.Substring($rootPath.Length).TrimStart([char[]]@('\', '/')).Replace('\', '/')
+    })) {
+        $violations += 'approved workflow is missing'
+    }
+
+    return @($violations | Sort-Object -Unique)
+}
+
 if ($SelfTest) {
     $approvedPath = Join-Path $Root $approvedWorkflowPath
     $approvedContent = Get-Content -LiteralPath $approvedPath -Raw
@@ -76,22 +107,34 @@ if ($SelfTest) {
     $evilContent = Get-Content -LiteralPath $evilFixturePath -Raw
     $approvedViolations = Test-WorkflowContent -Path $approvedWorkflowPath -Content $approvedContent
     $evilViolations = Test-WorkflowContent -Path '.github/workflows/evil-build.yml' -Content $evilContent
-    if ($approvedViolations.Count -gt 0 -or $evilViolations.Count -eq 0) {
-        Write-Error -ErrorAction Continue "Workflow-policy self-test failed. Approved violations: $($approvedViolations -join ', '); evil fixture was rejected: $($evilViolations.Count -gt 0)."
+
+    $testRoot = Join-Path ([IO.Path]::GetTempPath()) "wellness-workflow-policy-$([guid]::NewGuid().ToString('N'))"
+    $testWorkflowRoot = Join-Path $testRoot '.github/workflows'
+    try {
+        New-Item -ItemType Directory -Path $testWorkflowRoot -Force | Out-Null
+        Copy-Item -LiteralPath $approvedPath -Destination (Join-Path $testWorkflowRoot 'documentation-quality.yml')
+        Copy-Item -LiteralPath $evilFixturePath -Destination (Join-Path $testWorkflowRoot 'unapproved.yml')
+        $discoveryViolations = Test-WorkflowDirectory -DirectoryRoot $testRoot
+    }
+    finally {
+        if (Test-Path -LiteralPath $testRoot) {
+            Remove-Item -LiteralPath $testRoot -Recurse -Force
+        }
+    }
+
+    $unapprovedDiscovered = @($discoveryViolations | Where-Object { $_ -match '^\.github/workflows/unapproved\.yml: workflow path is not approved$' }).Count -eq 1
+    if ($approvedViolations.Count -gt 0 -or $evilViolations.Count -eq 0 -or -not $unapprovedDiscovered) {
+        Write-Error -ErrorAction Continue "Workflow-policy self-test failed. Approved violations: $($approvedViolations -join ', '); evil fixture was rejected: $($evilViolations.Count -gt 0); independent enumeration rejected an additional workflow: $unapprovedDiscovered."
         exit 1
     }
-    Write-Output "Workflow-policy self-test passed; evil-build.yml rejected for $($evilViolations.Count) policy violations."
+    Write-Output "Workflow-policy self-test passed; evil-build.yml rejected for $($evilViolations.Count) policy violations; independent enumeration discovered and rejected an additional workflow."
     exit 0
 }
 
-$normalizedWorkflowPath = $WorkflowPath.Replace('\', '/') -replace '^\./', ''
-$fullWorkflowPath = Join-Path $Root $normalizedWorkflowPath
-if (-not (Test-Path -LiteralPath $fullWorkflowPath -PathType Leaf)) { throw "Approved workflow not found: $normalizedWorkflowPath" }
-$workflowContent = Get-Content -LiteralPath $fullWorkflowPath -Raw
-$violations = Test-WorkflowContent -Path $normalizedWorkflowPath -Content $workflowContent
+$violations = Test-WorkflowDirectory -DirectoryRoot $Root
 if ($violations.Count -gt 0) {
     $violations | ForEach-Object { Write-Error -ErrorAction Continue "Workflow policy violation: $_" }
     exit 1
 }
 
-Write-Output "Workflow policy passed for $normalizedWorkflowPath."
+Write-Output "Workflow policy independently enumerated .github/workflows and passed for the sole approved workflow."

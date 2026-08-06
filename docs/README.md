@@ -1,15 +1,16 @@
 # Wellness Companion Documentation
 
 - **Document Identifier:** DOC-IDX-001
-- **Version:** 1.0.0
+- **Version:** 1.0.1
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-06
 - **Review Date:** 2026-11-05
 - **Status:** active
 - **Governance Approval:** Approved
+- **Supersedes:** 1.0.0
 
-**Current phase:** Phase 2A.0, repository enforcement and CI remediation only
+**Current phase:** Phase 2A.0.1, narrow repository and CI remediation only
 
 ## Authority order
 
@@ -38,7 +39,29 @@ Subordinate documents cannot create exceptions to higher documents. A conflict b
 
 ## Architecture decisions
 
-- [ADR-013: Markdown lint policy exceptions](decisions/ADR-013-markdown-lint-policy.md)
+- [ADR-016: Markdown lint policy exceptions](decisions/ADR-016-markdown-lint-policy.md)
+
+## Repository spelling policy
+
+CSpell uses Option B: an explicit allowlist of governed text, documentation,
+configuration, workflow, script, web-source, and TypeScript/JavaScript file
+types. The canonical scope is the `files` list in [`.cspell.json`](../.cspell.json).
+It includes PowerShell and YAML now and includes future application source types,
+so Phase 2A source cannot be silently omitted. Git metadata, binary files,
+generated output, dependencies, reports, caches, and temporary tooling
+directories are excluded by the configuration.
+
+Local and remote checks both invoke CSpell without a competing file glob. Run
+the local check from the repository root with:
+
+```powershell
+npx.cmd --yes cspell@10.0.1 lint --config .cspell.json --no-progress
+```
+
+Dictionary additions are limited to reviewed product vocabulary, technical
+terms, commands, platform names, file formats, PowerShell identifiers, and
+intentional synthetic fixture values. Genuine spelling errors must be corrected
+in their source files rather than added to the dictionary.
 
 ## Security and privacy
 
