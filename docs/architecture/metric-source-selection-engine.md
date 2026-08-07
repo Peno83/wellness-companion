@@ -1,13 +1,14 @@
 # Metric Source Selection Engine
 
 - **Document Identifier:** ARCH-MSS-001
-- **Version:** 0.1.0
+- **Version:** 0.2.0
 - **Owner:** Data Steward (unassigned)
 - **Approver:** Not applicable while draft
 - **Effective Date:** Not applicable while draft
 - **Review Date:** Before implementing canonical metric selection
 - **Status:** draft
 - **Governance Approval:** Pending human review
+- **Supersedes:** 0.1.0
 
 ## Core principle
 
@@ -15,13 +16,20 @@ The engine selects the best eligible source for each metric, not one preferred d
 
 ## Selection modes
 
-| Mode | Behaviour |
-| --- | --- |
-| Automatic | Apply the effective metric policy to all eligible candidates |
-| User Preferred | Use the user's fixed source when it has a valid record |
+| Mode                    | Behaviour                                                                                                         |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Automatic               | Apply the effective metric policy to all eligible candidates                                                      |
+| User Preferred          | Use the user's fixed source when it has a valid record                                                            |
 | Preferred With Fallback | Use the preferred source, then ordered fallbacks only when no valid primary record exists for the required period |
 
 Every metric stores its mode. Restoring the system default appends an event rather than deleting preference history.
+
+The Phase 2A.1.1 foundation enforces these modes directly. Automatic mode
+ignores any retained preferred-source identifier. User Preferred returns an
+explicit `preference_unsatisfied` outcome with no selected source when the fixed
+source is unavailable; it never silently substitutes. Preferred With Fallback
+checks the primary and then each ordered fallback, labels fallback use, and
+returns the same explicit unsatisfied outcome when none is eligible.
 
 ## Deterministic selection sequence
 

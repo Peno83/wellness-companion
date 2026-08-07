@@ -71,7 +71,7 @@ jobs:
       - name: Validate workflow policy
         shell: pwsh
         run: ./.github/scripts/Test-WorkflowPolicy.ps1
-      - name: Enforce Phase 2A.0 boundary
+      - name: Enforce Phase 2A.1 boundary
         shell: pwsh
         run: ./.github/scripts/Test-PhaseBoundary.ps1
 

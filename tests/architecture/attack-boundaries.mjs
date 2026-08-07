@@ -26,10 +26,28 @@ const attacks = [
     rule: "source-selection-cannot-use-ai",
   },
   {
+    name: "connector to persistence",
+    fixture: "connector-persistence",
+    entry: "src/modules/connectors/index.ts",
+    rule: "connectors-must-not-access-persistence",
+  },
+  {
+    name: "UI to persistence",
+    fixture: "ui-persistence",
+    entry: "app/page.ts",
+    rule: "ui-cannot-access-persistence",
+  },
+  {
     name: "governance to feature flags",
     fixture: "governance-flags",
     entry: "src/modules/governance/index.ts",
     rule: "governance-cannot-depend-on-feature-flags",
+  },
+  {
+    name: "circular dependency",
+    fixture: "circular-dependency",
+    entry: "src/modules/alpha/index.ts",
+    rule: "no-circular",
   },
 ];
 

@@ -19,6 +19,7 @@ notifications, reporting, payments, or a product dashboard.
 - [Testing strategy](testing-strategy.md)
 - [Developer setup](developer-setup.md)
 - [Main branch protection recommendation](branch-protection-recommendation.md)
+- [Phase 2A.1.1 remediation evidence](remediation-2a.1.1.md)
 - [Transition evidence](../governance/phase-2a.1-transition-evidence.md)
 
 The [Governance Constitution](../governance/governance-constitution.md) remains

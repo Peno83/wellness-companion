@@ -1,3 +1,5 @@
+import { systemClock, type Clock } from "@/src/lib/clock";
+
 import type {
   CanonicalSourceDecision,
   FallbackPreference,
@@ -70,43 +72,8 @@ export function selectCanonicalSource(
   if (eligible.length === 0)
     throw new Error("No eligible synthetic source candidate.");
 
-  const preferenceOrder = [
-    ...(preference.preferredSourceIdentifier
-      ? [preference.preferredSourceIdentifier]
-      : []),
-    ...(fallback?.orderedSourceIdentifiers ?? []),
-  ];
-  const preferred = preferenceOrder
-    .map((identifier) =>
-      eligible.find(
-        (evaluation) => evaluation.candidate.sourceIdentifier === identifier,
-      ),
-    )
-    .find((evaluation) => evaluation !== undefined);
-
-  const selectedEvaluation =
-    preferred ??
-    [...eligible].sort(
-      (left, right) =>
-        Number(Boolean(left.candidate.transportSource)) -
-          Number(Boolean(right.candidate.transportSource)) ||
-        right.candidate.validDayCount - left.candidate.validDayCount ||
-        left.candidate.sourceIdentifier.localeCompare(
-          right.candidate.sourceIdentifier,
-        ),
-    )[0];
-  if (!selectedEvaluation) throw new Error("Source selection failed closed.");
-
   const ranked = [...eligible]
-    .sort(
-      (left, right) =>
-        Number(Boolean(left.candidate.transportSource)) -
-          Number(Boolean(right.candidate.transportSource)) ||
-        right.candidate.validDayCount - left.candidate.validDayCount ||
-        left.candidate.sourceIdentifier.localeCompare(
-          right.candidate.sourceIdentifier,
-        ),
-    )
+    .sort(compareEvaluations)
     .map((evaluation, index) => ({ ...evaluation, rank: index + 1 }));
   const evaluations = evaluated.map(
     (evaluation) =>
@@ -116,18 +83,80 @@ export function selectCanonicalSource(
       ) ?? evaluation,
   );
 
+  const findEligible = (sourceIdentifier: string) =>
+    ranked.find(
+      (evaluation) =>
+        evaluation.candidate.sourceIdentifier === sourceIdentifier,
+    );
+
+  let selectedEvaluation: SourceSuitabilityEvaluation | undefined;
+  let outcome: CanonicalSourceDecision["outcome"] = "automatic_selected";
+  let preferenceSatisfied = true;
+  let fallbackSourceIdentifier: string | null = null;
+  let preferenceMessage =
+    "Automatic ranking selected the highest eligible source.";
+
+  if (preference.mode === "automatic") {
+    selectedEvaluation = ranked[0];
+  } else if (preference.mode === "user_preferred") {
+    selectedEvaluation = preference.preferredSourceIdentifier
+      ? findEligible(preference.preferredSourceIdentifier)
+      : undefined;
+    if (selectedEvaluation) {
+      outcome = "preferred_selected";
+      preferenceMessage =
+        "The explicit user-selected source was eligible and selected.";
+    } else {
+      outcome = "preference_unsatisfied";
+      preferenceSatisfied = false;
+      preferenceMessage =
+        "The explicit user-selected source was unavailable; automatic substitution is prohibited.";
+    }
+  } else {
+    const preferenceOrder = [
+      ...(preference.preferredSourceIdentifier
+        ? [preference.preferredSourceIdentifier]
+        : []),
+      ...(fallback?.orderedSourceIdentifiers ?? []),
+    ];
+    const selectedIndex = preferenceOrder.findIndex((identifier) =>
+      Boolean(findEligible(identifier)),
+    );
+    selectedEvaluation =
+      selectedIndex >= 0
+        ? findEligible(preferenceOrder[selectedIndex] ?? "")
+        : undefined;
+    if (!selectedEvaluation) {
+      outcome = "preference_unsatisfied";
+      preferenceSatisfied = false;
+      preferenceMessage =
+        "Neither the preferred source nor an ordered fallback was eligible.";
+    } else if (selectedIndex === 0) {
+      outcome = "preferred_selected";
+      preferenceMessage = "The preferred source was eligible and selected.";
+    } else {
+      outcome = "fallback_selected";
+      fallbackSourceIdentifier = selectedEvaluation.candidate.sourceIdentifier;
+      preferenceMessage = `Fallback source ${fallbackSourceIdentifier} was selected after preceding configured sources were unavailable.`;
+    }
+  }
+
+  const selectedCandidate = selectedEvaluation?.candidate ?? null;
   return {
     metricIdentifier,
-    selected: selectedEvaluation.candidate,
+    selected: selectedCandidate,
+    outcome,
+    preferenceSatisfied,
+    fallbackSourceIdentifier,
     evaluations,
     preference,
     explanation: {
-      selectedSourceIdentifier: selectedEvaluation.candidate.sourceIdentifier,
-      reasons: selectedEvaluation.factors,
+      selectedSourceIdentifier: selectedCandidate?.sourceIdentifier ?? null,
+      reasons: selectedEvaluation?.factors ?? [preferenceMessage],
+      preferenceMessage,
+      fallbackUsed: outcome === "fallback_selected",
       alternatives: evaluations
-        .filter(
-          (evaluation) => evaluation.candidate !== selectedEvaluation.candidate,
-        )
+        .filter((evaluation) => evaluation.candidate !== selectedCandidate)
         .map((evaluation) => ({
           sourceIdentifier: evaluation.candidate.sourceIdentifier,
           reasonsNotSelected:
@@ -142,6 +171,20 @@ export function selectCanonicalSource(
   };
 }
 
+function compareEvaluations(
+  left: SourceSuitabilityEvaluation,
+  right: SourceSuitabilityEvaluation,
+): number {
+  return (
+    Number(Boolean(left.candidate.transportSource)) -
+      Number(Boolean(right.candidate.transportSource)) ||
+    right.candidate.validDayCount - left.candidate.validDayCount ||
+    left.candidate.sourceIdentifier.localeCompare(
+      right.candidate.sourceIdentifier,
+    )
+  );
+}
+
 export function createMethodologyBreak(
   metricIdentifier: MetricIdentifier,
   previousSourceIdentifier: string,
@@ -153,8 +196,14 @@ export function createMethodologyBreak(
     metricIdentifier,
     previousSourceIdentifier,
     newSourceIdentifier,
+    previousMethodologyIdentifier: previousSourceIdentifier,
+    newMethodologyIdentifier: newSourceIdentifier,
     reason: "source_changed",
     occurredAt: clock.now().toISOString(),
+    effectiveTimestamp: clock.now().toISOString(),
+    compatibilityStatus: "unknown",
+    warningText:
+      "The canonical source changed; methodology compatibility must be evaluated before aggregation.",
     policyVersion: CALCULATION_VERSION,
   };
 }
@@ -193,4 +242,3 @@ function candidate(
     revoked: false,
   };
 }
-import { systemClock, type Clock } from "@/src/lib/clock";

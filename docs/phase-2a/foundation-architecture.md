@@ -1,12 +1,13 @@
 # Foundation Architecture
 
 - **Document Identifier:** ARCH-2A1-001
-- **Version:** 1.0.0
+- **Version:** 1.1.0
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
 - **Effective Date:** 2026-08-07
 - **Review Date:** 2026-11-05
 - **Status:** active
+- **Supersedes:** 1.0.0
 
 ## Implemented boundary
 
@@ -44,6 +45,12 @@ logging redacts sensitive keys and recursively scans messages, unknown fields,
 nested objects, arrays, credential-bearing URLs, provider keys, bearer tokens,
 private keys, and cloud connection strings.
 
+Source preference modes are enforced rather than decorative: automatic ranking
+ignores fixed preferences, fixed user preferences fail explicitly when
+unavailable, and ordered fallbacks are labeled. A non-aggregating methodology
+foundation preserves source periods, emits structured compatibility warnings,
+and blocks incompatible aggregation without explicit governed policy.
+
 ## Synthetic connector demonstration
 
 The WHOOP, Garmin, and Hume connector classes are deterministic in-memory test
@@ -58,7 +65,8 @@ confers superiority.
 Prisma models only platform-control records: policy versions, feature flags,
 audit events, governance decisions, connector definitions, and metric
 definitions. No personal measurement record exists. The initial migration is
-reversible and contains no seed or real data.
+forward-only and contains no seed or real data. Synthetic development recovery
+requires controlled database reset and recreation; no down migration exists.
 
 ## Runtime boundary
 
@@ -66,3 +74,7 @@ PostgreSQL is described through Docker Compose for local development. The
 application validates configuration before use and exposes no database API.
 External integrations remain both disabled by default and prohibited by the
 phase-boundary control.
+
+The runtime image copies owned artifacts and runs as the built-in non-root
+`node` user. Database configuration is supplied only at runtime; no database
+URL is persisted in a Docker build layer.

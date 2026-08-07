@@ -29,6 +29,7 @@
     "Anthropic",
     "AKIA",
     "backpressure",
+    "bioimpedance",
     "bulkheading",
     "bypassable",
     "Claude",
@@ -112,6 +113,7 @@
     "eslintcache",
     "flyctl",
     "runbooks",
+    "rmssd",
     "stylelintcache",
     "depcruise"
   ]

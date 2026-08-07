@@ -1,5 +1,6 @@
 -- Phase 2A.1 synthetic-safe platform foundation.
--- Roll back in development by dropping these six tables in reverse dependency order.
+-- Forward-only. Recovery in this synthetic development phase uses controlled
+-- database reset and recreation; this file is not a down migration.
 CREATE TABLE "PolicyVersion" (
     "id" TEXT NOT NULL,
     "version" TEXT NOT NULL,

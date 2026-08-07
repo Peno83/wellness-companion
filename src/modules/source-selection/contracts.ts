@@ -44,8 +44,10 @@ export interface FallbackPreference {
 }
 
 export interface SourceDecisionExplanation {
-  readonly selectedSourceIdentifier: string;
+  readonly selectedSourceIdentifier: string | null;
   readonly reasons: readonly string[];
+  readonly preferenceMessage: string;
+  readonly fallbackUsed: boolean;
   readonly alternatives: readonly Readonly<{
     sourceIdentifier: string;
     reasonsNotSelected: readonly string[];
@@ -55,7 +57,14 @@ export interface SourceDecisionExplanation {
 
 export interface CanonicalSourceDecision {
   readonly metricIdentifier: MetricIdentifier;
-  readonly selected: SourceCandidate;
+  readonly selected: SourceCandidate | null;
+  readonly outcome:
+    | "automatic_selected"
+    | "preferred_selected"
+    | "fallback_selected"
+    | "preference_unsatisfied";
+  readonly preferenceSatisfied: boolean;
+  readonly fallbackSourceIdentifier: string | null;
   readonly evaluations: readonly SourceSuitabilityEvaluation[];
   readonly explanation: SourceDecisionExplanation;
   readonly preference: SourcePreference;
@@ -65,7 +74,51 @@ export interface MethodologyBreak {
   readonly metricIdentifier: MetricIdentifier;
   readonly previousSourceIdentifier: string;
   readonly newSourceIdentifier: string;
-  readonly reason: "source_changed";
+  readonly previousMethodologyIdentifier: string;
+  readonly newMethodologyIdentifier: string;
+  readonly reason:
+    | "source_changed"
+    | "methodology_changed"
+    | "estimate_state_changed"
+    | "measurement_classification_changed";
   readonly occurredAt: string;
+  readonly effectiveTimestamp: string;
+  readonly compatibilityStatus: "compatible" | "incompatible" | "unknown";
+  readonly warningText: string;
+  readonly policyVersion: string;
+}
+
+export interface SourceMethodologyPeriod {
+  readonly sourceIdentifier: string;
+  readonly methodologyIdentifier: string;
+  readonly compatibilityGroup: string;
+  readonly measurementClassification: MeasurementClassification;
+  readonly estimateState: EstimateState;
+  readonly startTimestamp: string;
+  readonly endTimestamp: string;
+}
+
+export interface MixedMethodologyWarning {
+  readonly metricIdentifier: MetricIdentifier;
+  readonly mixedMethodology: true;
+  readonly compatibilityStatus: "compatible" | "incompatible";
+  readonly warningText: string;
+  readonly policyVersion: string;
+  readonly periods: readonly SourceMethodologyPeriod[];
+  readonly breaks: readonly MethodologyBreak[];
+}
+
+export interface MethodologyTrendAnalysis {
+  readonly metricIdentifier: MetricIdentifier;
+  readonly periods: readonly SourceMethodologyPeriod[];
+  readonly breaks: readonly MethodologyBreak[];
+  readonly warning: MixedMethodologyWarning | null;
+  readonly aggregationAllowed: boolean;
+  readonly policyVersion: string;
+}
+
+export interface GovernedAggregationPolicy {
+  readonly approvedByGovernance: true;
+  readonly allowIncompatibleMethodologies: boolean;
   readonly policyVersion: string;
 }

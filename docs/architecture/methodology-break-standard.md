@@ -1,13 +1,14 @@
 # Methodology Break Standard
 
 - **Document Identifier:** ARCH-METH-001
-- **Version:** 0.1.0
+- **Version:** 0.2.0
 - **Owner:** Analytics Owner (unassigned)
 - **Approver:** Not applicable while draft
 - **Effective Date:** Not applicable while draft
 - **Review Date:** Before displaying mixed-method trends
 - **Status:** draft
 - **Governance Approval:** Pending human review
+- **Supersedes:** 0.1.0
 
 ## Purpose
 
@@ -31,6 +32,19 @@ Record metric, effective timestamp or boundary, previous and new source decision
 ## Presentation
 
 Trend views identify periods by source and display the break at its effective boundary. Mixed-source trends carry a warning and cannot be described as fully comparable. Reports and exports include the same boundary and source history.
+
+## Phase 2A.1.1 foundation
+
+The synthetic foundation preserves ordered source-methodology periods and
+creates structured breaks containing previous and new source, previous and new
+methodology, effective timestamp, reason, compatibility status, warning text,
+and policy version. Direct-to-estimated, manual-to-device, and incompatible
+methodology changes are classified as incompatible.
+
+No production aggregation is implemented. The foundation aggregation guard
+throws for an incompatible break unless an explicit policy object records
+governance approval and permission for incompatible methodologies. This guard
+does not itself authorize such a policy or any future aggregation feature.
 
 ## Recalculation
 
