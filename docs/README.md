@@ -10,7 +10,7 @@
 - **Governance Approval:** Approved
 - **Supersedes:** 1.0.1
 
-**Current phase:** Vendor-neutral product-direction and metric-source architecture amendment; documentation only
+**Current phase:** Phase 2A.1 synthetic platform foundation
 
 ## Authority order
 
@@ -26,6 +26,14 @@ Subordinate documents cannot create exceptions to higher documents. A conflict b
 - [AI Use Policy](governance/ai-use-policy.md)
 - [Review Findings Register](governance/review-findings-register.md)
 - [Residual Risk Register](governance/residual-risk-register.md)
+- [Phase 2A.1 Transition Evidence](governance/phase-2a.1-transition-evidence.md)
+
+## Implemented foundation
+
+- [Phase 2A.1 review package](phase-2a/README.md)
+- [Foundation architecture](phase-2a/foundation-architecture.md)
+- [Testing strategy](phase-2a/testing-strategy.md)
+- [Developer setup](phase-2a/developer-setup.md)
 
 ## Architecture standards
 
@@ -48,6 +56,7 @@ Subordinate documents cannot create exceptions to higher documents. A conflict b
 ## Architecture decisions
 
 - [ADR-016: Markdown lint policy exceptions](decisions/ADR-016-markdown-lint-policy.md)
+- [ADR-031: Synthetic platform foundation](decisions/ADR-031-synthetic-platform-foundation.md)
 
 ## Repository spelling policy
 
@@ -78,7 +87,7 @@ in their source files rather than added to the dictionary.
 
 ## Phase boundary
 
-These documents and repository controls define future behavior. They do not create application code, modules, infrastructure, provider connections, databases, authentication, APIs, SDKs, packages, credentials, or frontend pages. GitHub Actions runs documentation-only Markdown lint, broken-link, and spelling checks; it runs no application build.
+Phase 2A.1 permits the enumerated synthetic platform shell and platform-control schema. Provider connections, real health data, authentication, AI, scoring, notifications, reports, payments, credentials, and product frontend pages remain prohibited. GitHub Actions runs documentation controls plus foundation lint, format, type, test, architecture, build, audit, and browser-smoke checks.
 
 ## Repository control history
 
@@ -86,3 +95,4 @@ These documents and repository controls define future behavior. They do not crea
 - Phase 1.3 superseded and removed that placeholder with `.github/workflows/documentation-quality.yml`.
 - Phase 1.4 made the documentation workflow enforceable across all repository changes, added phase-boundary and secret-pattern checks, and pinned action dependencies to immutable commits.
 - Phase 2A.0 restricts executable workflows to an exact allowlist, validates approved workflow content, expands secret detection, and makes all documentation checks pass locally.
+- Phase 2A.1 transitions the allowlist to a synthetic application foundation and adds executable build and test enforcement without authorizing health features.

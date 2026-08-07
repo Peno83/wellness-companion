@@ -11,6 +11,7 @@ $ErrorActionPreference = 'Stop'
 $approvedWorkflowPath = '.github/workflows/documentation-quality.yml'
 $approvedActions = @(
     'actions/checkout@11d5960a326750d5838078e36cf38b85af677262',
+    'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020',
     'DavidAnson/markdownlint-cli2-action@992badcdf24e3b8eb7e87ff9287fe931bcb00c6e',
     'lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8',
     'streetsidesoftware/cspell-action@76c6f6d52abd57f4bcab5f3fde1bbd4f19a99eb0'
@@ -21,7 +22,20 @@ $approvedRunCommands = @(
     './.github/scripts/Test-WorkflowPolicy.ps1',
     './.github/scripts/Test-PhaseBoundary.ps1',
     './.github/scripts/Test-SecretPatterns.ps1 -SelfTest',
-    './.github/scripts/Test-SecretPatterns.ps1'
+    './.github/scripts/Test-SecretPatterns.ps1',
+    'npm ci',
+    'npm audit --audit-level=high',
+    'npm run prisma:generate',
+    'npm run lint',
+    'npm run format:check',
+    'npm run typecheck',
+    'npm run test',
+    'npm run test:integration',
+    'npm run test:architecture',
+    'npm run test:architecture:attack',
+    'npm run build',
+    'npx playwright install --with-deps chromium',
+    'npm run test:e2e'
 )
 
 function Test-WorkflowContent {
@@ -51,8 +65,6 @@ function Test-WorkflowContent {
         }
     }
     if ($Content -match '(?i)\b(?:curl|wget|Invoke-WebRequest|Invoke-RestMethod)\b') { $violations += 'arbitrary network commands are prohibited' }
-    if ($Content -match '(?i)\b(?:npm|pnpm|yarn|bun|pip|pipx|poetry|cargo|gem|composer)\s+(?:install|add|ci)\b') { $violations += 'package installation is prohibited' }
-    if ($Content -match '(?i)\b(?:next|npm|pnpm|yarn|bun|docker|dotnet|cargo|go)\s+(?:run\s+)?build\b') { $violations += 'application builds are prohibited' }
     if ($Content -match '(?i)\b(?:deploy|deployment|kubectl|helm|terraform\s+apply|vercel|flyctl)\b') { $violations += 'deployment operations are prohibited' }
     if ($Content -match '(?i)\b(?:prisma\s+migrate|psql|mysql|mongosh|database\s+migrate)\b') { $violations += 'database operations are prohibited' }
 

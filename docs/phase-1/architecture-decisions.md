@@ -375,3 +375,10 @@ Related: [Governance Constitution](../governance/governance-constitution.md), [s
 **Consequences:** Some conflicts remain unresolved and visible rather than producing a misleading number.
 
 **Alternatives:** Average everything (false precision); always discard all but one record (loses compatible aggregation opportunities).
+
+## Implemented foundation decision
+
+The first implementation decision is maintained as the standalone
+[ADR-031](../decisions/ADR-031-synthetic-platform-foundation.md). It authorizes
+only the modular, synthetic-only foundation and retains the deny-by-default
+phase boundary for all later capabilities.

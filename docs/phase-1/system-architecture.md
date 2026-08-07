@@ -15,6 +15,10 @@
 
 ## Architectural authority
 
+## Phase 2A.1 implementation status
+
+The implemented subset is documented in the [Foundation Architecture](../phase-2a/foundation-architecture.md). It realizes the application shell, governance-first composition, platform contracts, synthetic adapters, source-selection demonstration, and platform-control schema. All later health, identity, AI, scoring, and integration components in this target architecture remain unimplemented and unauthorized.
+
 Governance is the highest architectural authority. Every component, data flow, event, calculation, feature flag, AI interaction, and output must comply with the effective constitution and policy bundle. No application path may write a trusted result or reach a user by routing around the Governance Engine.
 
 When governance is missing, unavailable, expired, revoked, incompatible, or unable to decide, affected processing fails closed. A less restricted downstream component cannot overturn a governance denial.

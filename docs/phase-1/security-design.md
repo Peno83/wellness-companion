@@ -15,6 +15,14 @@
 
 ## Security assumptions
 
+## Phase 2A.1 implemented controls
+
+Configuration is schema-validated, logs redact sensitive key classes, errors
+expose safe messages, dependencies are locked and audited, actions are commit
+pinned, and module boundaries are checked statically. Synthetic connectors
+make no network calls. The database schema contains platform controls only and
+the health endpoint exposes no dependency, credential, or database detail.
+
 - Wellness observations, notes, scores, and recommendations are highly sensitive even if local law does not classify the product as healthcare.
 - Clients, user-entered text, imported files, and future provider payloads are untrusted.
 - A valid account session does not authorize every action or purpose.

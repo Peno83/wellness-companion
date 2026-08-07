@@ -88,3 +88,46 @@ jobs:
       - name: Check repository content
         shell: pwsh
         run: ./.github/scripts/Test-SecretPatterns.ps1
+
+  platform-foundation:
+    name: Platform foundation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DATABASE_URL: postgresql://localhost:5432/wellness_platform?schema=public
+      APP_VERSION: 0.1.0
+      LOG_LEVEL: info
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
+      - name: Generate Prisma client
+        run: npm run prisma:generate
+      - name: Lint source
+        run: npm run lint
+      - name: Check formatting
+        run: npm run format:check
+      - name: Check types
+        run: npm run typecheck
+      - name: Run unit and integration tests
+        run: npm run test
+      - name: Run integration suite explicitly
+        run: npm run test:integration
+      - name: Check architecture boundaries
+        run: npm run test:architecture
+      - name: Attack architecture boundaries
+        run: npm run test:architecture:attack
+      - name: Build application
+        run: npm run build
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+      - name: Run browser smoke test
+        run: npm run test:e2e

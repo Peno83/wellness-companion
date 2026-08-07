@@ -14,6 +14,13 @@
 
 ## Purpose
 
+## Phase 2A.1 implementation
+
+The in-memory foundation provider reserves every major module flag and defaults
+all flags to off. Evaluations retain reason and version metadata. Governance is
+not a flag and is evaluated independently; enabling a flag cannot overturn a
+governance denial.
+
 Every major module must support feature flags so rollout can be staged, monitored, stopped, and reversed. Flags limit exposure; they do not authorize data collection or bypass governance.
 
 ## Required module flags

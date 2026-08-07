@@ -44,6 +44,8 @@
     "Fitbit",
     "gpgsign",
     "gstack",
+    "healthcheck",
+    "healthkit",
     "idempotency",
     "linters",
     "lockfiles",
@@ -68,6 +70,7 @@
     "pousr",
     "pscustomobject",
     "psql",
+    "isready",
     "pwsh",
     "PRIV",
     "PROV",
@@ -75,6 +78,7 @@
     "pseudonymous",
     "recusal",
     "rehydration",
+    "reflog",
     "retryable",
     "reweight",
     "reweighting",
@@ -88,6 +92,7 @@
     "tombstoned",
     "unbuildable",
     "unconfigured",
+    "unflaggable",
     "unexercisable",
     "unitless",
     "unmodelled",
@@ -96,6 +101,7 @@
     "unsatisfiable",
     "upcasting",
     "vercel",
+    "vitest",
     "WCAG",
     "WHOOP",
     "webp",
@@ -106,6 +112,7 @@
     "eslintcache",
     "flyctl",
     "runbooks",
-    "stylelintcache"
+    "stylelintcache",
+    "depcruise"
   ]
 }

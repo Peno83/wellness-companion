@@ -9,11 +9,19 @@
 - **Status:** draft
 - **Governance Approval:** Pending Release Authority review
 - **Supersedes:** 0.1.0
-- **Current stopping point:** Vendor-neutral product-direction and metric-source architecture amendment; documentation only
+- **Current stopping point:** Phase 2A.1 synthetic platform foundation; review required before further scope
 
 **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md). Schedule or scope cannot waive a constitutional gate.
 
 ## Roadmap principles
+
+## Phase 2A.1: Synthetic platform foundation — implemented for review
+
+The repository now contains the governed application shell, platform contracts,
+synthetic-only adapters, deterministic source-selection demonstration,
+platform-control schema, test layers, containers, and CI enforcement described
+in the [Phase 2A.1 review package](../phase-2a/README.md). This milestone does
+not authorize subsequent health features or real integrations.
 
 - Each phase ends with evidence, not a date alone.
 - Safety, privacy, scoring, and user-rights work ship with the feature they govern.

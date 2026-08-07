@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model PolicyVersion {
+  id          String   @id @default(cuid())
+  version     String   @unique
+  status      String
+  effectiveAt DateTime
+  createdAt   DateTime @default(now())
+
+  decisions GovernanceDecision[]
+}
+
+model FeatureFlag {
+  key         String   @id
+  enabled     Boolean  @default(false)
+  version     String
+  description String
+  updatedAt   DateTime @updatedAt
+}
+
+model AuditEvent {
+  id            String   @id @default(cuid())
+  eventType     String
+  occurredAt    DateTime
+  policyVersion String
+  synthetic     Boolean  @default(true)
+  metadata      Json
+  createdAt     DateTime @default(now())
+
+  @@index([eventType, occurredAt])
+}
+
+model GovernanceDecision {
+  id              String        @id @default(cuid())
+  operation       String
+  outcome         String
+  reasonCodes     String[]
+  synthetic       Boolean       @default(true)
+  decidedAt       DateTime
+  policyVersionId String
+  policyVersion   PolicyVersion @relation(fields: [policyVersionId], references: [id], onDelete: Restrict)
+
+  @@index([operation, decidedAt])
+}
+
+model ConnectorDefinition {
+  id            String   @id @default(cuid())
+  connectorKey  String   @unique
+  displayName   String
+  synthetic     Boolean  @default(true)
+  version       String
+  schemaVersion String
+  capabilities  Json
+  createdAt     DateTime @default(now())
+}
+
+model MetricDefinition {
+  id          String   @id @default(cuid())
+  metricKey   String   @unique
+  displayName String
+  unit        String?
+  version     String
+  createdAt   DateTime @default(now())
+}
