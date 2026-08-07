@@ -1,14 +1,14 @@
 # Governance specification
 
 - **Document Identifier:** GOV-OPS-001
-- **Version:** 1.0.2
+- **Version:** 1.1.0
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
-- **Effective Date:** 2026-08-06
+- **Effective Date:** 2026-08-07
 - **Review Date:** 2026-11-05
 - **Status:** active
 - **Governance Approval:** Ratified
-- **Supersedes:** 1.0.0
+- **Supersedes:** 1.0.2
 - **Purpose:** Define who may approve changes that affect users, sensitive data, scoring, or safety.
 
 **Authority:** This operational specification is subordinate to the [Governance Constitution](../governance/governance-constitution.md). If the documents conflict, the constitution controls and affected work stops until this specification is corrected. This specification cannot create an exception to the constitution.
@@ -70,6 +70,14 @@ The product may summarize user-provided wellness data, show trends, and suggest 
 Every user-facing wellness claim needs an evidence record containing the claim, intended audience, evidence source, limitations, owner, approval date, and review date. Expired claims cannot create recommendations.
 
 ## Consent and purpose governance
+
+### Connector and source-selection governance
+
+Every connector stage requires governance: connector approval, consent, scope request, ingestion, validation, normalisation, conflict resolution, analytics, AI explanation, export, deletion, revocation, and disconnection. Connectors are read-only by default, request least privilege, store tokens encrypted, never log credentials, support per-source deletion, and expose complete audit history and user-visible provenance.
+
+Source ranking is deterministic and metric-specific. AI cannot select or rank a source. User overrides and fallback orders require explicit confirmation and immutable events. Governance reviews vendor terms, branding, commercial permissions, data quality, provenance fidelity, deletion behaviour, and any claim comparing devices.
+
+No output may claim medical superiority, clinical accuracy, diagnostic quality, proof of a condition, or suitability for medical decisions without separately approved evidence and legal review. Health concerns are referred to a qualified clinician.
 
 Consent is granular by purpose, not a single blanket checkbox. Proposed purposes are:
 
@@ -194,3 +202,4 @@ Related documents: [Governance Constitution](../governance/governance-constituti
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified GOV-OPS-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
 | 1.0.2 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. No normative requirements changed. | Andrew Penistone |
+| 1.1.0 | 2026-08-07 | Normative amendment | Added connector-stage governance, source-selection controls, and device-comparison language boundaries. | Andrew Penistone |

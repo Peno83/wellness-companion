@@ -1,14 +1,14 @@
 # Architecture decisions
 
 - **Document Identifier:** ARCH-ADR-001
-- **Version:** 0.1.1
+- **Version:** 0.2.0
 - **Owner:** Engineering Owner (unassigned)
 - **Approver:** Not applicable while draft
 - **Effective Date:** Not applicable while draft
 - **Review Date:** Before implementing any proposed decision
 - **Status:** draft
 - **Governance Approval:** Pending human review
-- **Supersedes:** 0.1.0
+- **Supersedes:** 0.1.1
 - **Convention:** `Proposed` decisions are binding only after approval. Rejected alternatives may be reconsidered through governance.
 
 **Authority:** All decisions are subordinate to the [Governance Constitution](../governance/governance-constitution.md). A constitutional conflict invalidates the decision; an ADR cannot authorize an exception.
@@ -33,6 +33,20 @@
 | ADR-014 | Independent versions and stored explanation manifests | Proposed |
 | ADR-015 | Feature flags for major modules, never core controls | Proposed |
 | ADR-016 | Markdown lint policy exceptions | Active; see standalone ADR |
+| ADR-017 | Direct API versus health-repository integration | Proposed |
+| ADR-018 | Vendor-neutral connector abstraction | Proposed |
+| ADR-019 | Metric-specific source precedence | Proposed |
+| ADR-020 | Duplicate preservation and canonical eligibility | Proposed |
+| ADR-021 | Hume through health repositories first | Proposed |
+| ADR-022 | Vendor-score non-replication | Proposed |
+| ADR-023 | Read-only connector default | Proposed |
+| ADR-024 | Metric-level rather than device-level source selection | Proposed |
+| ADR-025 | Deterministic source ranking | Proposed |
+| ADR-026 | User source-override rights | Proposed |
+| ADR-027 | Ordered fallback behaviour | Proposed |
+| ADR-028 | Methodology-break disclosure | Proposed |
+| ADR-029 | Transported-source attribution | Proposed |
+| ADR-030 | Prohibit incompatible metric averaging | Proposed |
 
 **Identifier correction:** Phase 2A.0 introduced a standalone Markdown lint
 policy using the already assigned ADR-013 identifier. The raw-data-to-AI
@@ -220,3 +234,144 @@ Related: [Governance Constitution](../governance/governance-constitution.md), [s
 | --- | --- | --- | --- |
 | 0.1.0 | Not applicable while draft | Initial draft architecture decision register. | Pending human review |
 | 0.1.1 | Not applicable while draft | Preserved AI isolation as ADR-013 and corrected the later Markdown lint policy identifier to ADR-016. | Pending human review |
+| 0.2.0 | Not applicable while draft | Added vendor-neutral connector and metric-source selection decisions ADR-017 through ADR-030. | Pending human review |
+
+## ADR-017: Direct API versus health-repository integration
+
+**Context:** Vendors expose different official access routes, permissions, histories, and commercial terms.
+
+**Decision:** Choose the approved route per vendor and capability. Direct cloud APIs, operating-system repositories, platform SDKs, and import/manual routes are peers behind one contract; none is universally preferred.
+
+**Consequences:** Origin and transport must be separate, and capability claims remain evidence-based. Connector investigations carry more platform-specific work.
+
+**Alternatives:** Require direct APIs for all vendors (often unavailable); route everything through repositories (loses capabilities and origin clarity).
+
+## ADR-018: Vendor-neutral connector abstraction
+
+**Context:** Provider-specific logic in analytics would create lock-in and inconsistent governance.
+
+**Decision:** Every connector implements versioned authorisation, consent, status, capability, sync, pagination, webhook, rate-limit, error, revocation, deletion, provenance, priority, quality, terms, and branding contracts.
+
+**Consequences:** Analytics consumes canonical contracts. Vendor-specific capabilities remain explicit extensions rather than leaking through the domain.
+
+**Alternatives:** Provider-specific pipelines (faster initially, fragmented controls); lowest-common-denominator schema (hides useful capability).
+
+## ADR-019: Metric-specific source precedence
+
+**Context:** One device may be strongest for one metric and incomplete for another.
+
+**Decision:** Precedence is versioned per metric and may incorporate a confirmed user preference. No device receives universal superiority.
+
+**Consequences:** Selection is more accurate and explainable but requires a policy for each supported metric.
+
+**Alternatives:** Global device priority (simple, frequently wrong); newest-record-wins (unstable and origin-blind).
+
+## ADR-020: Duplicate preservation and canonical eligibility
+
+**Context:** Direct and transported feeds can deliver the same source record multiple times.
+
+**Decision:** Preserve each received source event, group exact and probable duplicates deterministically, and make only eligible representatives canonical. A transported copy cannot outrank its original merely because of transport.
+
+**Consequences:** Storage and reconciliation are more complex, while audit and correction remain complete.
+
+**Alternatives:** Delete duplicates (loses delivery evidence); average duplicates (distorts values).
+
+## ADR-021: Hume through health repositories first
+
+**Context:** No approved assumption establishes a public Hume API suitable for this product.
+
+**Decision:** Plan initial Hume access through Apple Health or a supported Android repository where Hume-originated records are present. Investigate partner access separately.
+
+**Consequences:** Initial capability may be limited, and labels must say `Hume via` the repository.
+
+**Alternatives:** Assume an undocumented API (commercial and reliability risk); omit Hume planning entirely (misses a supported repository route).
+
+## ADR-022: Vendor-score non-replication
+
+**Context:** Proprietary scores encode vendor methods, branding, and specialist experiences.
+
+**Decision:** Import and display permitted proprietary scores with attribution, but never reverse-engineer, imitate, or present an internally recreated equivalent.
+
+**Consequences:** The product focuses on cross-platform gaps and cannot promise score parity.
+
+**Alternatives:** Clone vendor scores (misleading and legally risky); discard all vendor scores (removes useful attributed context).
+
+## ADR-023: Read-only connector default
+
+**Context:** Write access increases user harm, credential scope, and vendor risk without being needed for initial synthesis.
+
+**Decision:** Every connector is read-only by default. Write capability requires a separate approved purpose, consent, threat model, and release decision.
+
+**Consequences:** Initial integrations have lower privilege and cannot control devices or modify vendor records.
+
+**Alternatives:** Request broad scopes pre-emptively (violates minimisation); connector-specific defaults (inconsistent safety).
+
+## ADR-024: Metric-level rather than device-level source selection
+
+**Context:** Device-level selection ignores metric-specific coverage and measurement methods.
+
+**Decision:** Select and store source mode independently for every metric.
+
+**Consequences:** Users gain precise control; configuration and explanation surfaces are larger.
+
+**Alternatives:** One preferred device (simple but inaccurate); mix every available value (unreproducible).
+
+## ADR-025: Deterministic source ranking
+
+**Context:** Canonical values must be reproducible and cannot depend on opaque judgement.
+
+**Decision:** Versioned metric policies deterministically evaluate exclusions, suitability factors, ranks, confidence, and tie-breakers. AI cannot rank or select.
+
+**Consequences:** Decisions can be tested, audited, recalculated, and explained. Policies require ongoing stewardship.
+
+**Alternatives:** AI selection (non-deterministic); user-only selection (high burden and poor defaults).
+
+## ADR-026: User source-override rights
+
+**Context:** A deterministic default may not reflect an individual's use pattern or preference.
+
+**Decision:** Users may inspect, override, explain optionally, and restore source choice per metric after an impact preview and explicit confirmation.
+
+**Consequences:** User agency improves; preference integrity, audit, recalculation, and methodology disclosure become mandatory.
+
+**Alternatives:** No overrides (removes agency); silent preference changes (not informed or auditable).
+
+## ADR-027: Ordered fallback behaviour
+
+**Context:** Preferred sources may lack valid records for a required period.
+
+**Decision:** Evaluate explicitly ordered fallbacks only when the preferred source has no valid record for that period. Label every fallback decision and do not silently fill gaps from multiple sources.
+
+**Consequences:** Continuity is controlled and visible, with some gaps intentionally retained.
+
+**Alternatives:** Any-available-source fallback (unstable); no fallback (avoidable missing periods).
+
+## ADR-028: Methodology-break disclosure
+
+**Context:** Source, algorithm, connector, or classification changes can make trends incomparable.
+
+**Decision:** Append methodology-break events and mark affected trend periods, exports, and explanations whenever a material method boundary occurs.
+
+**Consequences:** Trends are more honest but visually and analytically more complex.
+
+**Alternatives:** Present continuous trends (misleading); discard history at each change (destroys longitudinal value).
+
+## ADR-029: Transported-source attribution
+
+**Context:** Health repositories often carry records created by another vendor or device.
+
+**Decision:** Store originating, transport, canonical, displayed, and fallback sources separately. Display transported records as `Origin via Transport`.
+
+**Consequences:** Provenance is accurate and duplicate detection improves. Interfaces must carry a richer source path.
+
+**Alternatives:** Attribute to transport repository (false origin); show only origin (hides the access path).
+
+## ADR-030: Prohibit incompatible metric averaging
+
+**Context:** Measurements with different methods, windows, or proprietary definitions may share a label but not meaning.
+
+**Decision:** Do not average incompatible measurements. Aggregation requires an approved metric policy defining compatibility, units, windows, and explanation.
+
+**Consequences:** Some conflicts remain unresolved and visible rather than producing a misleading number.
+
+**Alternatives:** Average everything (false precision); always discard all but one record (loses compatible aggregation opportunities).

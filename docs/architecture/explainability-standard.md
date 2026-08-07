@@ -1,14 +1,14 @@
 # Explainability Standard
 
 - **Document Identifier:** ARCH-EXP-001
-- **Version:** 1.0.2
+- **Version:** 1.1.0
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
-- **Effective Date:** 2026-08-06
+- **Effective Date:** 2026-08-07
 - **Review Date:** 2026-11-05
 - **Status:** active
 - **Governance Approval:** Ratified
-- **Supersedes:** 1.0.0
+- **Supersedes:** 1.0.2
 - **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
 - **Rule:** If a result cannot produce a faithful explanation from stored lineage, it cannot be shown as an authoritative product result.
 
@@ -17,6 +17,10 @@
 Explainability lets a user understand what the product did without suggesting clinical certainty or exposing hidden system reasoning. It is a stored, versioned product output derived from the same facts as the result, not prose reconstructed later from memory or an AI guess.
 
 ## Universal explanation contract
+
+For canonical source decisions, the explanation additionally identifies selected source, selection mode, originating vendor, transport path, reasons selected, alternatives considered, exclusion reasons, coverage and quality comparison, direct/estimate status, missing-data impact, fallback activation, methodology-break status, metric-policy version, and decision timestamp.
+
+Source explanations use deterministic structured facts. AI may phrase those facts only after governance and cannot add a selection reason, rank, clinical comparison, or unsupported claim.
 
 Every explanation contains:
 
@@ -189,3 +193,4 @@ Related: [Scoring Methodology](../phase-1/scoring-methodology.md), [Source Prove
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified ARCH-EXP-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
 | 1.0.2 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. No normative requirements changed. | Andrew Penistone |
+| 1.1.0 | 2026-08-07 | Normative amendment | Added canonical-source selection, transport, fallback, and methodology-break explanation requirements. | Andrew Penistone |

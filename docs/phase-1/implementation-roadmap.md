@@ -1,14 +1,15 @@
 # Implementation roadmap
 
 - **Document Identifier:** PLAN-ROAD-001
-- **Version:** 0.1.0
+- **Version:** 0.2.0
 - **Owner:** Andrew Penistone
 - **Approver:** Not applicable while draft
 - **Effective Date:** Not applicable while draft
 - **Review Date:** Before authorising the next implementation milestone
 - **Status:** draft
 - **Governance Approval:** Pending Release Authority review
-- **Current stopping point:** Phase 2A.0 repository enforcement and CI remediation
+- **Supersedes:** 0.1.0
+- **Current stopping point:** Vendor-neutral product-direction and metric-source architecture amendment; documentation only
 
 **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md). Schedule or scope cannot waive a constitutional gate.
 
@@ -161,6 +162,12 @@ Exit evidence:
 - Integration prerequisites and vendor evaluation template are approved.
 
 ## Phase 5: First external data integration — future, separately approved
+
+Phase 5 no longer assumes one universal provider. Before connector implementation, ratify the connector abstraction, provenance, reconciliation, capability, metric-policy, fallback, and methodology-break standards. Complete platform-specific legal, security, privacy, commercial, deletion, branding, and conformance reviews.
+
+The first pilot is read-only, default-off, and selected only after investigation. Planned routes include WHOOP, Fitbit, Garmin, and Oura cloud APIs; Apple HealthKit and Android Health Connect repositories; Samsung Health Data SDK where permitted; and imports/manual fallback. Hume begins through an available health repository while official partner access is investigated.
+
+Synthetic conformance tests precede personal data. Required suites cover duplicates, revocation, deletion, rate limits, transported attribution, source ranking, override/restore, fallback, methodology breaks, incompatible metrics, coverage exclusions, and explanation accuracy.
 
 **Goal:** Add one provider without weakening the provider-neutral domain or user control.
 

@@ -1,14 +1,14 @@
 # Review Findings Register
 
 - **Document Identifier:** GOV-FIND-001
-- **Version:** 1.2.1
+- **Version:** 1.3.0
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
-- **Effective Date:** 2026-08-06
+- **Effective Date:** 2026-08-07
 - **Review Date:** 2026-11-05
 - **Status:** active
 - **Governance Approval:** Ratified
-- **Supersedes:** 1.2.0
+- **Supersedes:** 1.2.1
 
 ## Register rules
 
@@ -72,7 +72,7 @@ Source: [Phase 1.2 Governance Gate Review](../reviews/2026-08-05-phase-1.2-gate-
 | P1.2-C-01 — AI has a review role without an AI-use policy or human review rule | Phase 1.2 review C2A-01 | Critical | Establish policy and keep AI advisory | Andrew Penistone | Phase 1.3 | Closed | [AI Use Policy](ai-use-policy.md) |
 | P1.2-C-02 — Separation of duties is unsatisfied and unrecorded | Phase 1.2 review C2A-02 | Critical | Record time-bounded risk; retain G3 block | Andrew Penistone | Phase 1.3 / before G3 | Accepted risk | [Residual Risk Register](residual-risk-register.md) |
 | P1.2-C-03 — Prior review findings have no disposition | Phase 1.2 review C2A-03 | Critical | Register all Critical and High findings | Andrew Penistone | Phase 1.3 | Closed | This register |
-| P1.2-H-01 — CI skeleton is nonfunctional | Phase 1.2 review H-01 | High | Configure and enable documentation-only quality checks, then require passing remote-run evidence | Andrew Penistone | Phase 2A.0.1 remote validation | Open | The local Markdown-only CSpell check passed, but the repository-wide remote spelling job failed on [run 31088012098](https://github.com/Peno83/wellness-companion/actions/runs/31088012098); closure evidence was insufficient. Phase 2A.0.1 repository-wide remediation passes locally and awaits a new successful remote run URL. Do not close without that evidence. |
+| P1.2-H-01 — CI skeleton is nonfunctional | Phase 1.2 review H-01 | High | Configure and enable documentation-only quality checks, then require passing remote-run evidence | Andrew Penistone | Phase 2A.0.1 remote validation | Closed | Closed on verified remote evidence. Workflow: Documentation quality (`.github/workflows/documentation-quality.yml`), run 6, event push, branch main. Commit SHA: `30b20ed3f77fdca9c52800e117789fb8b43edd20`. Run URL: [run 31152930783](https://github.com/Peno83/wellness-companion/actions/runs/31152930783). Conclusion: success. Executed 2026-08-07T06:08:37Z, completed 06:08:54Z. Checks completed: Markdown lint, Broken links, Spelling, Phase boundary (boundary self-test, workflow-policy self-test, workflow-policy validation, boundary enforcement) and Secret patterns (detection self-test, repository scan); 5 of 5 jobs successful with zero failed steps. Prior insufficient evidence retained: [run 31088012098](https://github.com/Peno83/wellness-companion/actions/runs/31088012098) failed, and [run 31117179698](https://github.com/Peno83/wellness-companion/actions/runs/31117179698) failed. Human confirmation: Andrew Penistone, 2026-08-07. |
 | P1.2-H-02 — Metadata is incomplete and status vocabulary conflicts | Phase 1.2 review H-02 | High | Normalize metadata now; define canonical content digests before executable policy bundles | Andrew Penistone | Phase 2A.1 policy-bundle milestone | Open | Lifecycle statuses and governed-document metadata corrected in Phase 2A.0. Digest remains open because no reproducible canonicalisation method exists; see [Versioning Framework](../architecture/versioning-framework.md#content-digest-canonicalisation-milestone). |
 | P1.2-H-03 — Ratified documents depend on unratified documents | Phase 1.2 review H-03 | High | Version all dependencies and retain draft gates until each is approved | Andrew Penistone | Before implementing a component dependent on a draft artifact | Open | Seven governed documents now have identifiers and versions. Product requirements, data model, scoring method, ADR log, and roadmap remain explicitly draft and cannot authorise implementation. |
 | P1.2-H-04 — CODEOWNERS and approval process are not operational | Phase 1.2 review H-04 | High | Activate protected review with eligible human reviewer | Andrew Penistone | Before protected branch use | Open | No closure evidence yet |
@@ -141,7 +141,7 @@ Source: [Phase 1.4 Gate Review](../reviews/2026-08-06-phase-1.4-gate-review.md).
 | P1.4-H-02 | Phase 1.4 review H-02 | High | Arbitrary executable workflows bypassed the phase boundary | Enforce exact workflow allowlist and content policy | Andrew Penistone | Phase 2A.0 | Closed | `Test-PhaseBoundary.ps1` rejects `evil-build.yml`; `Test-WorkflowPolicy.ps1` validates the sole approved workflow and its negative fixture |
 | P1.4-H-03 | Phase 1.4 review H-03 | High | Metadata, status vocabulary, digests, and draft dependencies remained inconsistent | Remediate what is reproducible and retarget unresolved gates | Andrew Penistone | Phase 2A.1 and before affected implementation | In progress | Statuses and seven document metadata blocks corrected; digest canonicalisation and draft approvals remain open under P1.2-H-02/H-03 |
 | P1.4-M-01 | Phase 1.4 review M-01 | Medium | Secret scanner missed material credential formats and lacked tests | Remediate | Andrew Penistone | Phase 2A.0 | Closed | Deterministic self-test covers 15 secret fixtures and five safe fixtures; repository scan passes with redacted reporting |
-| P1.4-M-02 | Phase 1.4 review M-02 | Medium | CSpell language, dictionary, and local/remote scope were misconfigured | Remediate | Andrew Penistone | Phase 2A.0.1 remote validation | In progress | Reopened: local Markdown-only CSpell passed, but remote repository-wide spelling failed on [run 31088012098](https://github.com/Peno83/wellness-companion/actions/runs/31088012098), so closure evidence was insufficient. Repository-wide remediation passes locally; remediated and awaiting successful remote evidence. |
+| P1.4-M-02 | Phase 1.4 review M-02 | Medium | CSpell language, dictionary, and local/remote scope were misconfigured | Remediate | Andrew Penistone | Phase 2A.0.1 remote validation | Closed | Closed on verified remote evidence after two documented reopenings. Workflow: Documentation quality (`.github/workflows/documentation-quality.yml`), run 6, event push, branch main. Commit SHA: `30b20ed3f77fdca9c52800e117789fb8b43edd20`. Run URL: [run 31152930783](https://github.com/Peno83/wellness-companion/actions/runs/31152930783). Conclusion: success. Executed 2026-08-07T06:08:37Z, completed 06:08:54Z. Checks completed: the Spelling job passed repository-wide under `use_cspell_files`, with local and remote scope reconciled at 47 files; Markdown lint, Broken links, Phase boundary and Secret patterns also passed; 5 of 5 jobs successful with zero failed steps. Scope and dictionary remediation is complete: `mongosh` and `pwsh` were the final terms, added in commit `30b20ed`. Human confirmation: Andrew Penistone, 2026-08-07. |
 | P1.4-M-03 | Phase 1.4 review M-03 | Medium | Registry effective date conflicted with Constitution 1.1.0 | Remediate | Andrew Penistone | Phase 2A.0 | Closed | Current registration now records effective date 2026-08-06 |
 | P1.4-M-04 | Phase 1.4 review M-04 | Medium | Phase 1.3 Medium and Low findings were unregistered | Remediate | Andrew Penistone | Phase 2A.0 | Closed | Phase 1.3 Medium and Low table in this register |
 | P1.4-M-05 | Phase 1.4 review M-05 | Medium | Guard rejected legitimate Markdown under schema and migrations paths | Remediate | Andrew Penistone | Phase 2A.0 | Closed | Boundary self-test permits `docs/schema/overview.md` and `docs/migrations.md` |
@@ -173,6 +173,7 @@ The tables above contain the source review and source identifier in the `Source`
 | 1.1.0 | 2026-08-06 | Added P1.1-H-13, Phase 1.2 Medium/Low findings, and Phase 1.3 findings; reopened P1.2-H-01 pending passing-run evidence; added explicit rationale traceability. | Andrew Penistone |
 | 1.2.0 | 2026-08-06 | Corrected CI evidence, added Phase 1.3 Medium/Low and Phase 1.4 findings, recorded completed human Git actions, normalised lifecycle metadata, and retargeted digest and draft-dependency work without false closure. | Andrew Penistone |
 | 1.2.1 | 2026-08-06 | Reopened P1.4-M-02 after remote spelling failure, aligned CSpell evidence with repository-wide scope, and retained P1.2-H-01 pending a successful remote run. | Andrew Penistone |
+| 1.3.0 | 2026-08-07 | Closed P1.2-H-01 and P1.4-M-02 on verified successful remote evidence: Documentation quality run 6, commit `30b20ed3f77fdca9c52800e117789fb8b43edd20`, conclusion success, 5 of 5 jobs passed on 2026-08-07. Recorded workflow name, commit SHA, run URL, conclusion, execution date, checks completed and human confirmation; retained the prior failing run references as history. | Andrew Penistone |
 
 ## Maintenance
 

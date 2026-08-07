@@ -1,13 +1,14 @@
 # Initial data model
 
 - **Document Identifier:** DATA-MOD-001
-- **Version:** 0.1.0
+- **Version:** 0.2.0
 - **Owner:** Data Steward (unassigned)
 - **Approver:** Not applicable while draft
 - **Effective Date:** Not applicable while draft
 - **Review Date:** Before data-model implementation
 - **Status:** draft
 - **Governance Approval:** Pending human review
+- **Supersedes:** 0.1.0
 - **Purpose:** Define domain meaning and constraints before choosing physical schemas or writing migrations.
 
 **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md). Phase 1.1 adopts event sourcing: the entities below describe governed projections and immutable event payload contracts, not directly mutable records.
@@ -50,6 +51,29 @@ governance evidence.
 The binding event envelope is defined by the [Event Sourcing Standard](../architecture/event-sourcing.md). The binding measurement envelope is defined by the [Source Provenance Standard](../architecture/source-provenance-standard.md).
 
 ## Core entities
+
+### Integration, reconciliation, and source-selection records
+
+The vendor-neutral model adds the following conceptual events or projections:
+
+| Record | Purpose |
+| --- | --- |
+| Vendor, Connector, Connection | Identify vendor, implementation contract, account context, state, and versions |
+| Consent Grant, Capability | Bind permitted scopes and metric availability to purpose and policy |
+| Raw Source Record, Normalised Measurement | Preserve source payload reference and its governed transformation |
+| Canonical Measurement, Canonical Source Decision | Identify the selected value and exact source decision without overwriting candidates |
+| Duplicate Group, Data Conflict | Group exact/probable duplicates and surface unresolved incompatibility |
+| Source Priority, Metric Source Policy | Version metric-specific deterministic precedence rules |
+| Data Coverage | Record availability, history, missingness, freshness, and limitation states |
+| Synchronisation Run, Connector Error | Record sync windows, pagination, outcomes, rate limits, and failures |
+| Revocation Event, Deletion Event | Enforce source-specific withdrawal and deletion lifecycle |
+| Metric Source Candidate, Source Suitability Evaluation, Source Ranking | Preserve all candidate factors, exclusions, ranks, and confidence |
+| Metric Source Preference, Metric Fallback Preference | Store automatic, user-preferred, and ordered-fallback modes |
+| Source Decision Explanation | Explain the selected and excluded candidates from stored facts |
+| Methodology Break, Mixed-Source Warning | Mark periods that are not fully comparable |
+| Source Override Event, Source Restore Event | Audit explicit confirmation, change, and restoration |
+
+Every normalised measurement retains originating vendor and application, device, source record identifier, original and import timestamps, original and normalised units, measurement classification, quality and estimation status, connector version, and schema version. It also distinguishes origin, transport, canonical, displayed, and fallback sources.
 
 ### Subject
 

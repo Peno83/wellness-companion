@@ -1,16 +1,29 @@
 # Product requirements
 
 - **Document Identifier:** PROD-REQ-001
-- **Version:** 0.1.0
+- **Version:** 0.2.0
 - **Owner:** Product Owner (unassigned)
 - **Approver:** Not applicable while draft
 - **Effective Date:** Not applicable while draft
 - **Review Date:** Before product implementation
 - **Status:** draft
 - **Governance Approval:** Pending human review
+- **Supersedes:** 0.1.0
 - **Applies to:** Planned MVP and its design constraints
 
 **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md). A requirement that conflicts with the constitution is invalid and must not enter implementation.
+
+## Vendor-neutral product direction amendment
+
+The product principle is: **Connect the health platforms you already use. Fill the gaps between them. Understand your complete wellness picture without replacing any device or app.** Wellness Companion is a third-party integration and intelligence layer, not a replacement, clone, or direct competitor for WHOOP, Apple Health, Samsung Health, Garmin Connect, Fitbit, Oura, or Hume.
+
+Each vendor remains authoritative for its proprietary scores and specialist experience. The product may display a permitted vendor score with clear source attribution, but must not recreate, reverse-engineer, rename, or imitate proprietary recovery, strain, sleep, readiness, body-battery, or health classifications.
+
+Priority capabilities are a unified wellness timeline, cross-platform trends and search, source provenance, conflict resolution, capability-gap detection, optional-module coverage, vendor-neutral personal experiments, longitudinal summaries, transparent correlations, user-controlled goals, and exportable source-linked reports.
+
+Non-priorities are proprietary score imitation, workout recording, GPS route tracking, device control, firmware management, community rankings, a device marketplace, and direct competition with vendor coaching.
+
+Source selection is per metric, deterministic, explainable, and user-controlled. Users can inspect the default, override it, configure ordered fallbacks, restore the default, and see coverage, quality, recalculation, and methodology-break consequences. No preference change deletes or overwrites source records.
 
 ## Product summary
 

@@ -1,14 +1,14 @@
 # Source Provenance Standard
 
 - **Document Identifier:** ARCH-PROV-001
-- **Version:** 1.0.2
+- **Version:** 1.1.0
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
-- **Effective Date:** 2026-08-06
+- **Effective Date:** 2026-08-07
 - **Review Date:** 2026-11-05
 - **Status:** active
 - **Governance Approval:** Ratified
-- **Supersedes:** 1.0.0
+- **Supersedes:** 1.0.2
 - **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md)
 - **Applies to:** Every manual, imported, device-originated, calculated, corrected, or migrated measurement
 
@@ -43,6 +43,14 @@ Every measurement must contain the following fields. Names are conceptual; the p
 | Original Record Reference | Immutable reference to the source record/event or supplied provider record ID | Always required; internal surrogate permitted when source supplies no ID |
 
 The envelope also carries the subject owner, metric definition version, event identifier, received time, consent/purpose reference, schema version, correction/supersession reference, and integrity metadata.
+
+## Vendor and transport attribution
+
+For integrated data, the envelope additionally records originating vendor, originating application, originating device, transport platform, connector identifier and version, source schema version, source record identifier, import timestamp, estimation status, duplicate-group reference, canonical-source decision reference, displayed-source label, and fallback status.
+
+Origin and transport are never conflated. A Hume-originated record transported through Apple Health is displayed as `Hume via Apple Health`; Apple Health is not the measuring device. Canonical selection never erases the candidate's original envelope.
+
+Every source decision links to its metric policy, suitability evaluation, user preference where applicable, explanation manifest, methodology-break state, and governance version.
 
 ## Controlled provenance values
 
@@ -164,3 +172,4 @@ Related: [Data Quality Framework](data-quality-framework.md), [Versioning Framew
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified ARCH-PROV-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
 | 1.0.2 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. No normative requirements changed. | Andrew Penistone |
+| 1.1.0 | 2026-08-07 | Normative amendment | Added originating, transport, canonical, displayed, and fallback source attribution. | Andrew Penistone |

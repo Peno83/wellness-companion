@@ -1,13 +1,14 @@
 # Phase 1, 1.1, and 1.2: Product, governance, and repository definition
 
 - **Document Identifier:** PH1-IDX-001
-- **Version:** 1.0.0
+- **Version:** 1.1.0
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
-- **Effective Date:** 2026-08-06
+- **Effective Date:** 2026-08-07
 - **Review Date:** 2026-11-05
 - **Status:** active
 - **Governance Approval:** Approved
+- **Supersedes:** 1.0.0
 - **Scope:** Documentation and design only
 
 This package defines what Wellness Companion should do, how it should be built, and which safeguards must exist before implementation starts. It intentionally contains no production application code, credentials, vendor SDKs, network calls, database connection, authentication integration, API, package setup, or frontend work.
@@ -33,6 +34,14 @@ The ratified [Governance Constitution](../governance/governance-constitution.md)
 15. [Initial data model](data-model.md) — conceptual events, projections, constraints, and retention semantics.
 16. [Architecture decisions](architecture-decisions.md) — proposed and superseded decisions.
 17. [Implementation roadmap](implementation-roadmap.md) — gated work after Phase 1.2 approval.
+18. [Connector Architecture](../architecture/connector-architecture.md) — vendor-neutral integration contract.
+19. [Source Reconciliation Standard](../architecture/source-reconciliation-standard.md) — duplicate, conflict, and canonical rules.
+20. [Capability Coverage Model](../architecture/capability-coverage-model.md) — explicit availability and module eligibility.
+21. [Metric Source Selection Engine](../architecture/metric-source-selection-engine.md) — deterministic per-metric selection and overrides.
+22. [Metric Source Policy Model](../architecture/metric-source-policy-model.md) — metric-specific ranking constraints.
+23. [Source Fallback Standard](../architecture/source-fallback-standard.md) — ordered and labelled fallback behaviour.
+24. [Methodology Break Standard](../architecture/methodology-break-standard.md) — mixed-method trend disclosure.
+25. [Vendor Integration Roadmap](../requirements/vendor-integration-roadmap.md) — investigation gates and planned routes.
 
 ## Shared assumptions
 

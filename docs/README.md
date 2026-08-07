@@ -1,16 +1,16 @@
 # Wellness Companion Documentation
 
 - **Document Identifier:** DOC-IDX-001
-- **Version:** 1.0.1
+- **Version:** 1.1.0
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
-- **Effective Date:** 2026-08-06
+- **Effective Date:** 2026-08-07
 - **Review Date:** 2026-11-05
 - **Status:** active
 - **Governance Approval:** Approved
-- **Supersedes:** 1.0.0
+- **Supersedes:** 1.0.1
 
-**Current phase:** Phase 2A.0.1, narrow repository and CI remediation only
+**Current phase:** Vendor-neutral product-direction and metric-source architecture amendment; documentation only
 
 ## Authority order
 
@@ -36,6 +36,14 @@ Subordinate documents cannot create exceptions to higher documents. A conflict b
 - [Feature Flag Framework](architecture/feature-flags.md)
 - [Event Sourcing Standard](architecture/event-sourcing.md)
 - [System Architecture](phase-1/system-architecture.md)
+- [Connector Architecture](architecture/connector-architecture.md)
+- [Source Reconciliation Standard](architecture/source-reconciliation-standard.md)
+- [Capability Coverage Model](architecture/capability-coverage-model.md)
+- [Metric Source Selection Engine](architecture/metric-source-selection-engine.md)
+- [Metric Source Policy Model](architecture/metric-source-policy-model.md)
+- [Source Fallback Standard](architecture/source-fallback-standard.md)
+- [Methodology Break Standard](architecture/methodology-break-standard.md)
+- [Vendor Integration Roadmap](requirements/vendor-integration-roadmap.md)
 
 ## Architecture decisions
 

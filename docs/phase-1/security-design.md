@@ -1,14 +1,14 @@
 # Security design
 
 - **Document Identifier:** SEC-DES-001
-- **Version:** 1.0.2
+- **Version:** 1.1.0
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
-- **Effective Date:** 2026-08-06
+- **Effective Date:** 2026-08-07
 - **Review Date:** 2026-11-05
 - **Status:** active
 - **Governance Approval:** Ratified
-- **Supersedes:** 1.0.0
+- **Supersedes:** 1.0.2
 - **Security objective:** Protect confidentiality, integrity, availability, user agency, and safety of wellness data throughout its lifecycle.
 
 **Authority:** Subordinate to the [Governance Constitution](../governance/governance-constitution.md) and complemented by the [Privacy by Design Standard](../security/privacy-by-design.md). Governance denial and protected security controls cannot be bypassed by flags, AI, operators, or downstream services.
@@ -119,6 +119,14 @@ No external language model is connected in Phase 1.1. Any future model design re
 
 ## Data isolation and minimization
 
+### Connector and source-preference security
+
+Connector access is read-only and least-privilege by default. Tokens are encrypted with separated keys, never logged, never included in analytics, and available only to the connector context that needs them. Connection, consent, revocation, deletion, and synchronisation state are isolated by source and purpose.
+
+Vendor payloads, repository records, SDK callbacks, imports, and manual entries are untrusted. Validation occurs before normalisation. Original payload references remain separated from canonical projections. A transported copy cannot acquire false device identity or higher trust merely through its repository path.
+
+Source preferences and fallback orders are sensitive integrity controls. Changes require authenticated explicit confirmation, purpose-aware authorisation, immutable audit events, version binding, anti-replay protection, and user-visible history. An attacker must not be able to suppress a primary source, activate a weaker fallback, or hide a methodology break.
+
 - Keep identity records logically separate from wellness records and join by internal subject ID.
 - Use synthetic fixtures in development and testing.
 - Do not clone production databases into lower environments.
@@ -186,3 +194,4 @@ Related: [Governance Constitution](../governance/governance-constitution.md), [p
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified SEC-DES-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
 | 1.0.2 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. No normative requirements changed. | Andrew Penistone |
+| 1.1.0 | 2026-08-07 | Normative amendment | Added connector-token, transported-record, and source-preference integrity controls. | Andrew Penistone |

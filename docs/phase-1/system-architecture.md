@@ -1,17 +1,17 @@
 # System Architecture
 
 - **Document Identifier:** ARCH-SYS-001
-- **Version:** 1.0.2
+- **Version:** 1.1.0
 - **Owner:** Andrew Penistone
 - **Approver:** Andrew Penistone
-- **Effective Date:** 2026-08-06
+- **Effective Date:** 2026-08-07
 - **Review Date:** 2026-11-05
 - **Status:** active
 - **Governance Approval:** Ratified
-- **Supersedes:** 1.0.0
+- **Supersedes:** 1.0.2
 - **Scope:** Logical target architecture, not an implementation
 - **Highest authority:** [Governance Constitution](../governance/governance-constitution.md)
-- **External integrations:** Explicitly excluded from Phase 1.1
+- **External integrations:** Architecturally specified but not authorised for implementation in this amendment
 
 ## Architectural authority
 
@@ -270,6 +270,18 @@ Governance, consent, provenance, quality validation, version binding, output val
 
 ## Future integration boundary
 
+The future boundary is vendor-neutral and uses four connector classes: direct cloud APIs, operating-system health repositories, platform-specific SDKs, and import/manual fallbacks. Every connector implements the governed contract in the [Connector Architecture](../architecture/connector-architecture.md).
+
+```text
+Connectors -> Raw Source Records -> Normalisation -> Duplicate Detection
+     -> Metric Suitability -> User Preference/Fallback -> Canonical Decision
+     -> Capability Coverage -> Governance -> Analytics and explanations
+```
+
+Originating source, transport source, canonical source, displayed source, and fallback source are separate concepts. A repository such as Apple Health or Health Connect must not be presented as the measuring device when it only transported another vendor's record.
+
+Canonical decisions are projections over preserved source events. Reconciliation, source ranking, preference changes, fallback activation, and methodology breaks append immutable events and remain reproducible from their policy versions. AI has no role in selection or ranking.
+
 Any future provider enters through an isolated adapter that emits canonical provenance-bearing events. Each adapter requires a constitutional compliance review, feature flag, purpose and consent, data-quality contract, version mapping, revocation, retention, deletion, export, failure, and vendor-risk design.
 
 No adapter, SDK, credential, webhook, network client, database, authentication integration, external API, or frontend page is created in Phase 1.1.
@@ -307,3 +319,4 @@ Related: [Architecture Decisions](architecture-decisions.md), [Initial Data Mode
 | 1.0.0 | 2026-08-05 | Initial normative release | Initial ratified ARCH-SYS-001 artifact. The owner and approver were recorded as Andrew Penfold. | Andrew Penfold (historical record; corrected identity: Andrew Penistone) |
 | 1.0.1 | 2026-08-06 | Administrative | Corrected the current owner and approver surname to Andrew Penistone. No normative requirements changed. | Andrew Penistone |
 | 1.0.2 | 2026-08-06 | Administrative | Reconciled lifecycle status with ARCH-VER-001 and recorded ratification separately. No normative requirements changed. | Andrew Penistone |
+| 1.1.0 | 2026-08-07 | Normative amendment | Added the vendor-neutral connector, reconciliation, capability, and metric-source decision architecture. | Andrew Penistone |
